@@ -1,4 +1,4 @@
-package com.example.mengzhihong.myapplication;
+package com.example.mengzhihong.myapplication.Home;
 
 /**
  * Created by mengzhihong on 2016/9/1.
