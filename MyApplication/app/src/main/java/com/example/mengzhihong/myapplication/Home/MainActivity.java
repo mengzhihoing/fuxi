@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private GoogleApiClient client;
 //    是否可以进入详情
     private boolean canGo=false;
+    private int kGuaNumber=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         }else {
 
             Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+            intent.putExtra("guaNumber",kGuaNumber);
             startActivity(intent);
 
         }
@@ -87,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 if (xingCount>0&&nameCount>0) {
 
                     canGo=true;
+                    kGuaNumber=guaNumber;
 
                     String benMingGua=String.format("本命卦：%d%s", guaNumber,gua.getBenMingGua(guaNumber));
                     String successGua=String.format("成功卦：%s",gua.getSuccess(guaNumber));
