@@ -55,9 +55,16 @@ public class ShowGuaActivity extends AppCompatActivity {
 //        是否有两个卦
         boolean isDouble=false;
 
+        Log.i("log",String.valueOf(pre));
+        Log.i("log",String.valueOf(next));
+
+
         if ((pre==next)||(pre+next==9)){
             isDouble=true;
         }
+
+        Log.i("log",String.valueOf(isDouble));
+
 
         BenMingDetail benMingDetail=new BenMingDetail();
         GuaName guaName=new GuaName();
@@ -66,16 +73,17 @@ public class ShowGuaActivity extends AppCompatActivity {
         if (type.equals("本命卦")){
             content=benMingDetail.getBenMingDetail(guaNumber);
 
-
         }else if (type.equals("成功卦")){
 
             int gua[]=guaName.getSuccess(guaNumber);
 
-            if (isDouble){
+            if (isDouble==true){
                 String text1=benMingDetail.getBenMingDetail(gua[0]);
                 String text2=benMingDetail.getBenMingDetail(gua[1]);
 
-                content=String.format(text1+"\n\n\n"+text2);
+
+                content=String.format(text1+"\n\n\n"+text2+"\n\n\n");
+
 
             }else {
                 String text1=benMingDetail.getBenMingDetail(gua[0]);
@@ -87,11 +95,11 @@ public class ShowGuaActivity extends AppCompatActivity {
 
             int gua[]=guaName.getFailure(guaNumber);
 
-            if (isDouble){
+            if (isDouble==true){
                 String text1=benMingDetail.getBenMingDetail(gua[0]);
                 String text2=benMingDetail.getBenMingDetail(gua[1]);
 
-                content=String.format(text1+"\n\n\n"+text2);
+                content=String.format(text1+"\n\n\n"+text2+"\n\n\n");
 
             }else {
                 String text1=benMingDetail.getBenMingDetail(gua[0]);
@@ -101,13 +109,13 @@ public class ShowGuaActivity extends AppCompatActivity {
         }else {
 //            衰变卦
 
-            int gua[]=guaName.getFailure(guaNumber);
+            int gua[]=guaName.getShuaiBian(guaNumber);
 
-            if (isDouble){
+            if (isDouble==true){
                 String text1=benMingDetail.getBenMingDetail(gua[0]);
                 String text2=benMingDetail.getBenMingDetail(gua[1]);
 
-                content=String.format(text1+"\n\n\n"+text2);
+                content=String.format(text1+"\n\n\n"+text2+"\n\n\n");
 
             }else {
                 String text1=benMingDetail.getBenMingDetail(gua[0]);
