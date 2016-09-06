@@ -7,6 +7,12 @@ public class GuaName {
 
     private int handleNameNumber(int number){
         if (number>8){
+
+            if(number%8==0){
+
+                return 8;
+            }
+
             return number%8;
         }
 
