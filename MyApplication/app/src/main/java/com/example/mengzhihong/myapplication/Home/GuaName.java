@@ -1,5 +1,7 @@
 package com.example.mengzhihong.myapplication.Home;
 
+import android.util.Log;
+
 /**
  * Created by mengzhihong on 2016/9/1.
  */
@@ -28,8 +30,63 @@ public class GuaName {
 
     }
 
-    public String getShuaiBian(int number){
-        String gua="";
+    public String getFullFailure(int guaNumber){
+
+
+        String guaText="";
+
+        int gua[]=getFailure(guaNumber);
+
+        if (gua[1]>0){
+            guaText =String.format("%d%s和%d%s",gua[0],getBenMingGua(gua[0]),gua[1],getBenMingGua(gua[1]));
+        }else {
+            guaText = String.format("%d%s", gua[0], getBenMingGua(gua[0]));
+        }
+
+        return guaText;
+    }
+
+    public String getFullBenMing(int guaNumber){
+
+      String text= String.format("%d%s",guaNumber, getBenMingGua(guaNumber));
+
+        return text;
+    }
+
+    public String getFullShuaiBian(int guaNumber ){
+
+        int gua[]= getShuaiBian(guaNumber);
+        Log.i("success",gua.toString());
+        String guaText="";
+
+        if (gua[1]>0){
+            guaText =String.format("%d%s和%d%s",gua[0],getBenMingGua(gua[0]),gua[1],getBenMingGua(gua[1]));
+        }else {
+            guaText = String.format("%d%s", gua[0], getBenMingGua(gua[0]));
+        }
+
+        return guaText;
+
+    }
+
+    public String getFullSuccess(int guaNumber ){
+
+      int gua[]= getSuccess(guaNumber);
+        Log.i("success",gua.toString());
+        String guaText="";
+
+        if (gua[1]>0){
+            guaText =String.format("%d%s和%d%s",gua[0],getBenMingGua(gua[0]),gua[1],getBenMingGua(gua[1]));
+        }else {
+            guaText = String.format("%d%s", gua[0], getBenMingGua(gua[0]));
+        }
+
+        return guaText;
+
+    }
+
+    public int[] getShuaiBian(int number){
+        int gua[]={-1,-1};
 
         int preNumber=number/10;
         int nextNumber=number%10;
@@ -48,10 +105,13 @@ public class GuaName {
                 int result1=handleNumber(9-preNumber)*10+handleNumber(9-preNumber+1);
                 int result2=handleNumber(9-preNumber+1)*10+handleNumber(9-preNumber);
 
-                String gua1=getBenMingGua(result1);
-                String gua2=getBenMingGua(result2);
+                gua[0]=result1;
+                gua[1]=result2;
 
-                gua=String.format(String.valueOf(result1)+gua1+"和"+String.valueOf(result2)+gua2);
+//                String gua1=getBenMingGua(result1);
+//                String gua2=getBenMingGua(result2);
+//
+//                gua=String.format(String.valueOf(result1)+gua1+"和"+String.valueOf(result2)+gua2);
 
             }
 
@@ -69,10 +129,13 @@ public class GuaName {
                 int result1=nextNumber*10+handleNumber((preNumber-1));
                 int result2=handleNumber((nextNumber+1))*10+preNumber;
 
-                String gua1=getBenMingGua(result1);
-                String gua2=getBenMingGua(result2);
+//                String gua1=getBenMingGua(result1);
+//                String gua2=getBenMingGua(result2);
+//
+//                gua=String.format(String.valueOf(result1)+gua1+"和"+String.valueOf(result2)+gua2);
 
-                gua=String.format(String.valueOf(result1)+gua1+"和"+String.valueOf(result2)+gua2);
+                gua[0]=result1;
+                gua[1]=result2;
 
             }
 
@@ -82,7 +145,9 @@ public class GuaName {
             {
                 int result =( 9-nextNumber)*10+(9-preNumber);
 
-                gua=String.valueOf(result) + getBenMingGua(result);
+//                gua=String.valueOf(result) + getBenMingGua(result);
+
+                gua[0]=result;
 
             }
 
@@ -99,24 +164,27 @@ public class GuaName {
         return gua;
     }
 
-    public String getFailure(int number){
+    public int[] getFailure(int number){
+
+        int gua[]={-1,-1};
 
         int preNumber=number/10;
         int nextNumber=number%10;
 
-        String gua="";
+//        String gua="";
 
         int result=(9-preNumber)*10+(9-nextNumber);
 
-        gua=String.valueOf(result)+getBenMingGua(result);
+//        gua=String.valueOf(result)+getBenMingGua(result);
 
+        gua[0]=result;
         return gua;
 
     }
 
 
-    public String getSuccess(int number){
-        String gua="";
+    public int[] getSuccess(int number){
+        int gua[]={-1,-1};
 
         int preNumber=number/10;
         int nextNumber=number%10;
@@ -135,10 +203,14 @@ public class GuaName {
                 int result1=preNumber*10+handleNumber((nextNumber+1));
                 int result2=handleNumber((preNumber+1))*10+nextNumber;
 
-                String gua1=getBenMingGua(result1);
-                String gua2=getBenMingGua(result2);
+                gua[0]=result1;
+                gua[1]=result2;
 
-                gua=String.format(String.valueOf(result1)+gua1+"和"+String.valueOf(result2)+gua2);
+//                String gua1=getBenMingGua(result1);
+//                String gua2=getBenMingGua(result2);
+
+
+//                gua=String.format(String.valueOf(result1)+gua1+"和"+String.valueOf(result2)+gua2);
 
             }
 
@@ -156,10 +228,13 @@ public class GuaName {
                 int result1=preNumber*10+handleNumber((nextNumber-1));
                 int result2=handleNumber((preNumber+1))*10+nextNumber;
 
-                String gua1=getBenMingGua(result1);
-                String gua2=getBenMingGua(result2);
+                gua[0]=result1;
+                gua[1]=result2;
 
-                gua=String.format(String.valueOf(result1)+gua1+"和"+String.valueOf(result2)+gua2);
+//                String gua1=getBenMingGua(result1);
+//                String gua2=getBenMingGua(result2);
+//
+//                gua=String.format(String.valueOf(result1)+gua1+"和"+String.valueOf(result2)+gua2);
 
             }
 
@@ -169,7 +244,9 @@ public class GuaName {
             {
               int result = nextNumber*10+preNumber;
 
-                gua=String.valueOf(result) + getBenMingGua(result);
+//                gua=String.valueOf(result) + getBenMingGua(result);
+
+                gua[0]=result;
 
             }
 

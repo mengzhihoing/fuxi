@@ -24,7 +24,8 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".Home.DetailActivity" />
-        <activity android:name=".Home.ShowGuaActivity"></activity>
+        <activity android:name=".Home.ShowGuaActivity" />
+        <activity android:name=".Home.NaviBarActivity"></activity>
     </application>
 
 </manifest>

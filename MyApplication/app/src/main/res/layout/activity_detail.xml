@@ -1,70 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.mengzhihong.myapplication.Home.DetailActivity">
+    tools:context="com.example.mengzhihong.myapplication.Home.DetailActivity"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/aaa"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/blue"
-        >
+        android:background="@color/purple">
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="25dp"
+            android:background="@drawable/back"
+            android:onClick="back"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
+       />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="四个基本卦"
+            android:text="详情"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:layout_centerInParent="true"/>
 
     </RelativeLayout>
 
+
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="本命卦"
-        android:id="@+id/button3"
-        android:layout_below="@+id/aaa"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
         android:onClick="showGua"
         />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="成功卦"
-        android:id="@+id/button4"
-        android:layout_alignTop="@+id/button6"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:onClick="showGua"
         />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="失败卦"
-        android:id="@+id/button5"
-        android:layout_alignTop="@+id/button3"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:onClick="showGua"
         />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="衰变卦"
-        android:id="@+id/button6"
-        android:layout_below="@+id/button5"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="50dp"
         android:onClick="showGua"
         />
-</RelativeLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/aaa"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:background="@color/blue"-->
+        <!--&gt;-->
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="四个基本卦"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="18sp"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:id="@+id/textView"/>-->
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+    <!--</RelativeLayout>-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:text="本命卦"-->
+        <!--android:id="@+id/button3"-->
+        <!--android:onClick="showGua"-->
+        <!--&lt;!&ndash;android:background="@drawable/button"&ndash;&gt;-->
+
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_marginBottom="146dp" />-->
+
+    <!--</RelativeLayout>-->
+
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:text="成功卦"-->
+        <!--android:id="@+id/button4"-->
+        <!--android:layout_alignTop="@+id/button6"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:onClick="showGua"-->
+        <!--&lt;!&ndash;android:background="@drawable/button"&ndash;&gt;-->
+
+        <!--/>-->
+
+    <!--</LinearLayout>-->
+
+
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:text="失败卦"-->
+        <!--android:id="@+id/button5"-->
+        <!--android:onClick="showGua"-->
+        <!--&lt;!&ndash;android:background="@drawable/button"&ndash;&gt;-->
+        <!--android:layout_alignBaseline="@+id/button3"-->
+        <!--android:layout_alignBottom="@+id/button3"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true" />-->
+
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:text="衰变卦"-->
+        <!--android:id="@+id/button6"-->
+        <!--android:onClick="showGua"-->
+        <!--&lt;!&ndash;android:background="@drawable/button"&ndash;&gt;-->
+
+        <!--android:layout_above="@+id/button5"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true" />-->
+<!--</RelativeLayout>-->
+
+
+

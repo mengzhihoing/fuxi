@@ -5,10 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.mengzhihong.myapplication.R;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends NaviBarActivity {
 
     private int kGuaNumber=0;
 
@@ -19,6 +20,8 @@ public class DetailActivity extends AppCompatActivity {
         getValue();
     }
 
+
+
     private void getValue(){
 
         Intent intent=getIntent();
@@ -26,20 +29,21 @@ public class DetailActivity extends AppCompatActivity {
         int guaNumber=intent.getIntExtra("guaNumber",0);
         kGuaNumber=guaNumber;
 
+    }
 
-//        BenMingDetail benming=new BenMingDetail();
-//
-//        String content=benming.getBenMingDetail(guaNumber);
-//
-//        Log.i("zhdi",content);
 
+    public void back(View v){
+        finish();
     }
 
 
     public void showGua(View v){
 
+        Button button=(Button) v;
+
         Intent intent = new Intent(DetailActivity.this, ShowGuaActivity.class);
         intent.putExtra("guaNumber",kGuaNumber);
+        intent.putExtra("type",button.getText());
         startActivity(intent);
 
     }

@@ -91,10 +91,10 @@ public class MainActivity extends AppCompatActivity {
                     canGo=true;
                     kGuaNumber=guaNumber;
 
-                    String benMingGua=String.format("本命卦：%d%s", guaNumber,gua.getBenMingGua(guaNumber));
-                    String successGua=String.format("成功卦：%s",gua.getSuccess(guaNumber));
-                    String failureGua=String.format("失败卦：%s",gua.getFailure(guaNumber));
-                    String shuaiBianGua=String.format("衰变卦：%s",gua.getShuaiBian(guaNumber));
+                    String benMingGua=String.format("本命卦：%s", guaNumber,gua.getFullBenMing(guaNumber));
+                    String successGua=String.format("成功卦：%s",gua.getFullSuccess(guaNumber));
+                    String failureGua=String.format("失败卦：%s",gua.getFullFailure(guaNumber));
+                    String shuaiBianGua=String.format("衰变卦：%s",gua.getFullShuaiBian(guaNumber));
 
                     describe = String.format("\"%s%s\"的笔画数是：%d+%d=%d\n %s\n %s\n %s\n %s", xingContent, nameContent, xingCount, nameCount, xingCount + nameCount, benMingGua, successGua, failureGua, shuaiBianGua);
                 }else {
