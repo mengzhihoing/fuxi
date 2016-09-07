@@ -1,4 +1,4 @@
-package com.example.mengzhihong.myapplication.Home;
+package com.example.mengzhihong.fragment;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.mengzhihong.myapplication.R;
+import com.example.mengzhihong.fragment.R;
 
 import java.lang.reflect.Array;
 
@@ -40,7 +40,7 @@ public class ShowGuaActivity extends AppCompatActivity {
 
         textView.setText(textViewText);
 
-        Log.i("gua",textViewText);
+//        Log.i("gua",textViewText);
 
 
 
@@ -55,15 +55,15 @@ public class ShowGuaActivity extends AppCompatActivity {
 //        是否有两个卦
         boolean isDouble=false;
 
-        Log.i("log",String.valueOf(pre));
-        Log.i("log",String.valueOf(next));
+//        Log.i("log",String.valueOf(pre));
+//        Log.i("log",String.valueOf(next));
 
 
         if ((pre==next)||(pre+next==9)){
             isDouble=true;
         }
 
-        Log.i("log",String.valueOf(isDouble));
+//        Log.i("log",String.valueOf(isDouble));
 
 
         BenMingDetail benMingDetail=new BenMingDetail();

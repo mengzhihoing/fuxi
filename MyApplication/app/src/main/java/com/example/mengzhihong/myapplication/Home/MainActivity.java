@@ -2,6 +2,7 @@ package com.example.mengzhihong.myapplication.Home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
