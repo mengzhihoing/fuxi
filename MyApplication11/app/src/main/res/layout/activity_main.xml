@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.meng.myapplication11.MainActivity">
+
+    <!--导航栏-->
+    <RelativeLayout
+        android:id="@+id/aaa"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        >
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
+            android:onClick="back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="日卦"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+
+        <LinearLayout
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context="ninecity.myfragments.Activity.ShowRiliActivity">
+
+
+
+
+
+
+            <!--+号-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="+"
+                    android:id="@+id/year_add"
+                    android:onClick="yearAdd"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="+"
+                    android:id="@+id/month_add"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="+"
+                    android:id="@+id/day_add"/>
+
+            </LinearLayout>
+
+            <!--年月日-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:id="@+id/year_button"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:id="@+id/month_button"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:id="@+id/day_button"/>
+
+            </LinearLayout>
+
+            <!---号-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="-"
+                    android:id="@+id/year_sub"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="-"
+                    android:id="@+id/month_sub"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="-"
+                    android:id="@+id/day_sub"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                >
+
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="查询"
+                    android:textSize="18sp"
+                    android:id="@+id/fetchButton"/>
+
+            </RelativeLayout>
+
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="承香墨影
+Android--UI之ScrollView
+
+前言
+
+　　本篇博客主要讲解ScrollView和HorizontalScrollView两个容器的使用。它们分别代表了垂直滚动以及水平滚动，滚动的内容是它其中包含的View。在本篇会简单介绍ScrollView和HorizontalScrollView的使用以及注意事项，最后以一个简单的Demo来演示一下这两个容器的使用。
+
+ScrollView
+
+　　ScrollView，通过官方文档的继承关系可以看出，它继承自FrameLayout，所以它是一种特殊类型的FrameLayout，因为它可以使用用户滚动显示一个占据的空间大于物理显示的视图列表。值得注意的是，ScrollView只能包含一个子视图或视图组，在实际项目中，通常包含的是一个垂直的LinearLayout。
+
+　　值得注意的是，ScrollView不能和ListView一起使用，因为ListView已经对垂直方向的滚动做了处理，它会迫使如果ListView的内容大于物理视图的内容的时候，强制垂直滚动的效果，所以这里使用ScrollView和ListView混合使用是没有意义的，对于ListView的讲解，可以参见我的另外一篇博客：Android--UI之ListView。ScrollView还需要注意EditText自带的多行输入的滚动效果，也是不可以混合使用的，如果在ScrollView中包含了多行的EditText，那EditText中自带的滚动效果将失效。其中心思想就是ScrollView是一个滚动视图的容器，对于一些自带了滚动效果的控件，是无法和它一起被混合使用的。
+
+　　在Android平台下，与ScrollView类似的还有一个HorizontalScrollView容器，这个容器与ScrollView的作用相反，主要适用于水平滚动，了解了ScrollView就基本上了解了HorizontalScrollView，所以这里着重讲解ScrollView的使用。
+
+示例Demo
+
+　　ScrollView其实就是一个布局，所以基本上没有什么太多的自己的方法或者属性需要特别讲解。这里直接展示一个Demo来讲解一下使用以及效果即可，这里提供了十张图片，需要放置在res/drawable-hdpi目录下。
+
+　　布局代码："
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"/>
+
+            </ScrollView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

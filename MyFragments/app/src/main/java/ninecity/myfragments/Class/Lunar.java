@@ -176,7 +176,9 @@ public class Lunar {
     }
 
     public String toString() {
-        return year + "年" + (leap ? "闰" : "") + chineseNumber[month - 1] + "月" + getChinaDayString(day);
+
+        String noliYear=cyclical();
+        return noliYear + "年" + (leap ? "闰" : "") + chineseNumber[month - 1] + "月" + getChinaDayString(day);
     }
 
 

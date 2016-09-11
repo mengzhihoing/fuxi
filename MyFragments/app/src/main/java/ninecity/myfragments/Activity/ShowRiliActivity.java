@@ -5,6 +5,7 @@ import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
@@ -12,18 +13,25 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.TimeZone;
 
+import ninecity.myfragments.Class.GuaName;
 import ninecity.myfragments.Class.Lunar;
+import ninecity.myfragments.Class.NongLi;
+import ninecity.myfragments.Class.YiJi;
 import ninecity.myfragments.R;
 
 public class ShowRiliActivity extends AppCompatActivity {
 
-    private DatePicker datepicker;
+//    private DatePicker datepicker;
     private Calendar calendar;
     private TextView textview;
+
+    private Button yearButton,monthButton,dayButton,yearAddButton,monthAddButton,dayAddButton,yearSubButon,monthSubButton,daySubButton,fetchButton;
 
     private int year;
     private int month;
     private int day;
+
+    private int currentYear,currentMonth,currentDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,17 +39,178 @@ public class ShowRiliActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_show_rili);
 
-        datepicker = (DatePicker)findViewById(R.id.myDatePicker);
+       init();
+    }
+
+
+    private void init(){
+
         textview = (TextView)findViewById(R.id.text);
         calendar = Calendar.getInstance();		//生成 Calendar 对象
         year = calendar.get(Calendar.YEAR);	//获取当前日期
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
         //显示当前的日期，月要加 1
-        textview.setText("当前时间：" +
-                year + "年" + (month + 1) + "月" + day + "日");
+//        textview.setText("当前时间：" +
+//                year + "年" + (month + 1) + "月" + day + "日");
         //注册日期改变监听器
-        datepicker.init(year, month, day, new MyDateChangedListener());
+//        datepicker.init(year, month, day, new MyDateChangedListener());
+
+        currentDay=day;
+        currentMonth=month+1;
+        currentYear=year;
+
+        System.out.println("first");
+        System.out.println(String.valueOf(currentYear));
+        System.out.println(String.valueOf(currentMonth));
+        System.out.println(String.valueOf(currentDay));
+
+
+        yearAddButton=(Button)findViewById(R.id.year_add);
+        monthAddButton=(Button)findViewById(R.id.month_add);
+        dayAddButton=(Button)findViewById(R.id.day_add);
+
+        yearButton=(Button)findViewById(R.id.year_button);
+        monthButton=(Button)findViewById(R.id.month_button);
+        dayButton=(Button)findViewById(R.id.day_button);
+
+        yearSubButon=(Button)findViewById(R.id.year_sub);
+        monthSubButton=(Button)findViewById(R.id.month_sub);
+        daySubButton=(Button)findViewById(R.id.day_sub);
+
+        fetchButton=(Button)findViewById(R.id.fetchButton);
+
+
+
+//        获取系统时间
+
+        String yearText=String.format("%d年",currentYear) ;
+        String monthText=String.format("%d月",currentMonth) ;
+        String dayText=String.format("%d日",currentDay) ;
+
+        yearButton.setText(yearText);
+        monthButton.setText(monthText);
+        dayButton.setText(dayText);
+
+
+//        年+
+
+        yearAddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentYear++;
+
+
+                updateYear(currentYear);
+
+                handleYear();
+
+
+            }
+        });
+
+
+//        月+
+
+        monthAddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                currentMonth++;
+
+                if (currentMonth>12){
+                    currentMonth=1;
+                }
+
+             updateMonth(currentMonth);
+                handleMonth();
+
+
+            }
+        });
+
+
+        //        日+
+
+        dayAddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                currentDay++;
+
+
+
+                handleDay();
+
+
+
+            }
+        });
+
+
+//-
+        //        年-
+
+        yearSubButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentYear--;
+
+                updateYear(currentYear);
+
+                handleYear();
+
+            }
+        });
+
+
+//        月-
+
+        monthSubButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                currentMonth--;
+
+                if (currentMonth<1){
+                    currentMonth=12;
+                }
+
+              updateMonth(currentMonth);
+                handleMonth();
+
+            }
+        });
+
+
+        //        日-
+
+        daySubButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                currentDay--;
+
+
+              handleDay();
+
+
+            }
+        });
+
+
+//        查询
+        fetchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                fetchRiGua();
+
+            }
+        });
+
+
+
     }
 
     public void back(View v) {
@@ -49,47 +218,258 @@ public class ShowRiliActivity extends AppCompatActivity {
     }
 
 
-    private class MyDateChangedListener implements DatePicker.OnDateChangedListener {
-        /* onDateChanged 方法中各个参数的含义：
-         * @param view 当前发生变化的时间选择器
-         * @param year 当前时间选择器的年
-         * @param monthOfYear 当前时间选择器的月 返回值为(0 ~ 11)故使用时要加 1
-         * @param dayOfMonth 当前时间选择器的日
-         * */
-        @Override
-        public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            year = year;
-            month = monthOfYear + 1;
-            day = dayOfMonth;
+
+
+
+       private void fetchRiGua(){
+
+
+
+         System.out.println("final");
+         System.out.println(String.valueOf(currentYear));
+         System.out.println(String.valueOf(currentMonth));
+         System.out.println(String.valueOf(currentDay));
+
+
+
+
+         NongLi nongLi=new NongLi(currentYear,currentMonth,currentDay);
+         nongLi.printLunar();
+
+
+
+         GuaName guaName=new GuaName();
+
+            int guaNumber=guaName.handleNameNumber(nongLi.getNongliRi())*10+guaName.handleNameNumber(currentDay);
+//            System.out.println(guaNumber);
+
+            String benMing=guaName.getFullBenMing(guaNumber);
+
+            YiJi yiji=new YiJi();
+            String detail=yiji.getYiJi(guaNumber);
+
+
+
             textview.setText("当前时间：" +
-                    year + "年" + month + "月" + day + "日");
+                    currentYear + "年" + currentMonth + "月" + currentDay + "日"+"\n"+"农历："+nongLi.getFullNongli()+"\n日卦："+benMing+"\n\n"+detail+"\n\n\n");
 
 
 
-
-
-                Calendar cal=Calendar.getInstance();
-                cal.set(year,monthOfYear,dayOfMonth);
-
-
-
-                Lunar lunar=new Lunar(cal);
-                System.out.print("农历日期:");
-                System.out.print(lunar.year+"年 ");
-                System.out.print(lunar.month+"月 ");
-                System.out.print(lunar.getChinaDayString(lunar.day));
-                System.out.println("*************");
-                System.out.println(lunar);
-
-
-
-
-            
 
 
 
         }
+
+
+
+//    日改变处理
+
+    private void handleDay(){
+
+        boolean isRunNian=isRunNian(currentYear);
+
+       switch (currentMonth){
+
+           case 2:
+           {
+
+               if (isRunNian==false){
+
+                   if (currentDay>28){
+                       currentDay=28;
+                   }else if (currentDay<1){
+                       currentDay=1;
+                   }
+
+
+               }else {
+
+                   if (currentDay>29){
+                       currentDay=29;
+                   }else if (currentDay<1){
+                       currentDay=1;
+                   }
+
+               }
+           }
+
+
+           break;
+
+           case 4:
+           case 6:
+           case 9:
+           case 11:
+           {
+               if (currentDay>30){
+                   currentDay=30;
+               }else if (currentDay<1){
+                   currentDay=1;
+               }
+
+           }
+
+           break;
+
+
+           default:
+           {
+               if (currentDay>31){
+                   currentDay=31;
+               }else if (currentDay<1){
+                   currentDay=1;
+               }
+
+           }
+
+           break;
+
+
+
+
+       }
+
+        updateDay(currentDay);
+
+
     }
+
+
+//    月份改变处理
+
+    private  void handleMonth(){
+
+
+        boolean isRunNian=isRunNian(currentYear);
+
+      switch (currentMonth){
+
+          case 2:
+          {
+              if (isRunNian==false){
+
+                  if (currentDay>28){
+                      currentDay=28;
+
+                      updateDay(currentDay);
+                  }
+
+              }else {
+
+                  if (currentDay>29){
+                      currentDay=29;
+
+                      updateDay(currentDay);
+                  }
+
+              }
+          }
+
+          break;
+
+
+          case 1:
+          case 3:
+          case 5:
+          case 7:
+          case 8:
+          case 10:
+          case 12:
+          {
+
+          }
+
+          break;
+
+
+          default:
+          {
+              if(currentDay>30){
+                  currentDay=30;
+                  updateDay(currentDay);
+              }
+          }
+
+          break;
+
+      }
+
+
+
+
+    }
+
+
+//年份改变处理
+    private void handleYear(){
+
+        boolean isRunNian=isRunNian(currentYear);
+
+        if (isRunNian==false){
+
+            if (currentMonth==2){
+
+                if (currentDay>28){
+                    currentDay=28;
+                    updateDay(currentDay);
+
+                }
+
+            }
+
+
+        }else {
+
+            if (currentMonth==2){
+
+                if (currentDay>29){
+                    currentDay=29;
+                    updateDay(currentDay);
+
+                }
+
+            }
+
+        }
+
+
+    }
+
+    private boolean isRunNian(int year){
+
+        if ((year % 100 != 0) && (year % 4 == 0) || (year % 400 == 0))
+        {
+            return true;
+        }
+
+
+        return false;
+
+
+    }
+
+
+    private void updateYear(int year){
+
+        String yearText=String.format("%d年",year) ;
+        yearButton.setText(yearText);
+
+    }
+
+    private void updateMonth(int month){
+
+        String monthText=String.format("%d月",month) ;
+        monthButton.setText(monthText);
+
+    }
+
+    private void updateDay(int day){
+
+        String dayText=String.format("%d日",day) ;
+        dayButton.setText(dayText);
+
+    }
+
 
 
 }

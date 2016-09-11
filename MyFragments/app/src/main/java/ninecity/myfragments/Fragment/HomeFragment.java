@@ -111,13 +111,13 @@ public class HomeFragment extends Fragment {
     //    进入详情
     public void pushToDetail(){
 
-//        if(canGo==false) {
+        if(canGo==false) {
 
 //            Toast.makeText(mcontext,"姓氏和名字必须都有汉字", Toast.LENGTH_LONG);
 
             Log.i("warning","name is null");
 
-//        }else {
+        }else {
 
 //            Intent intent = new Intent(mcontext, DetailActivity.class);
 //            intent.putExtra("guaNumber",kGuaNumber);
@@ -128,7 +128,7 @@ public class HomeFragment extends Fragment {
             intent.putExtra("guaNumber",kGuaNumber);
 
             startActivity(intent);
-//        }
+        }
 
     }
 

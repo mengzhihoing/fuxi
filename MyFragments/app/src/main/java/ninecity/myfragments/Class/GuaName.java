@@ -7,7 +7,7 @@ import android.util.Log;
  */
 public class GuaName {
 
-    private int handleNameNumber(int number){
+    public int handleNameNumber(int number){
         if (number>8){
 
             if(number%8==0){

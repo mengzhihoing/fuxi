@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="ninecity.myfragments.Activity.ShowRiliActivity"
-    android:orientation="vertical">
-
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent" >
 
     <RelativeLayout
         android:id="@+id/aaa"
@@ -16,41 +12,160 @@
         <ImageButton
             android:layout_width="40dp"
             android:layout_height="25dp"
-            android:background="@drawable/back"
-            android:onClick="back"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="12dp"
-            />
+            android:background="@drawable/back"
+            android:onClick="back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="日卦"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<!--导航栏-->
+
+
+
+
+    <!--+号-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="+"
+            android:id="@+id/year_add"
+            android:onClick="yearAdd"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="+"
+            android:id="@+id/month_add"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="+"
+            android:id="@+id/day_add"/>
+
+    </LinearLayout>
+
+    <!--年月日-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text=""
+            android:id="@+id/year_button"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=""
+            android:id="@+id/month_button"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=""
+            android:id="@+id/day_button"/>
+
+    </LinearLayout>
+
+    <!---号-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="-"
+            android:id="@+id/year_sub"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="-"
+            android:id="@+id/month_sub"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="-"
+            android:id="@+id/day_sub"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        >
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="查询"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:layout_centerInParent="true"
-            />
+            android:id="@+id/fetchButton"/>
 
     </RelativeLayout>
 
 
 
-    <DatePicker
-        android:id="@+id/myDatePicker"
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:startYear="2015"
-        android:endYear="2020"
-        android:calendarViewShown="true"
-        android:spinnersShown="true" />
-
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/text"/>
-
-
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
 
 
 </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

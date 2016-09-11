@@ -45,7 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="消息"
+                    android:text="首页"
                     android:textColor="#82858b" />
             </LinearLayout>
         </RelativeLayout>
@@ -79,7 +79,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="联系人"
+                    android:text="预测"
                     android:textColor="#82858b" />
             </LinearLayout>
         </RelativeLayout>
@@ -113,7 +113,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="动态"
+                    android:text="我"
                     android:textColor="#82858b" />
             </LinearLayout>
         </RelativeLayout>

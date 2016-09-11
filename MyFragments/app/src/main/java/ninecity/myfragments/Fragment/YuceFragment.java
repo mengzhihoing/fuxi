@@ -49,7 +49,6 @@ public class YuceFragment extends Fragment {
 //                System.out.print(lunar.month+"月 ");
 //                System.out.print(lunar.getChinaDayString(lunar.day));
 //                System.out.println("*************");
-//                System.out.println(lunar);
 
 
                 Intent intent=new Intent();

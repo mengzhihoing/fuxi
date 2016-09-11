@@ -1,9 +1,11 @@
 package ninecity.myfragments.Activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 
 import ninecity.myfragments.Class.BenMingDetail;
@@ -26,20 +28,20 @@ public class ShowGuaActivity extends AppCompatActivity {
 
     private void showContent(){
 
-//        TextView textView=(TextView)findViewById(R.id.show_);
-//
-//        Intent intent=getIntent();
-//        int guaNumber=intent.getIntExtra("guaNumber",0);
-//        String type=intent.getStringExtra("type");
-//
-//        Log.i("type",type);
-//
-//
-//        String textViewText=handleString(guaNumber,type);
-//
-//        textView.setText(textViewText);
-//
-//        Log.i("gua",textViewText);
+        TextView textView=(TextView)findViewById(R.id.showText);
+
+        Intent intent=getIntent();
+        int guaNumber=intent.getIntExtra("guaNumber",0);
+        String type=intent.getStringExtra("type");
+
+        Log.i("type",type);
+
+
+        String textViewText=handleString(guaNumber,type);
+
+        textView.setText(textViewText);
+
+        Log.i("gua",textViewText);
 
 
 
