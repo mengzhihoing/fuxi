@@ -25,7 +25,6 @@ public class DetailActivity extends AppCompatActivity {
     private void getValue(){
 
         Intent intent=getIntent();
-
         int guaNumber=intent.getIntExtra("guaNumber",0);
         kGuaNumber=guaNumber;
 

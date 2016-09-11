@@ -28,7 +28,7 @@ public class ShowGuaActivity extends AppCompatActivity {
 
     private void showContent(){
 
-        TextView textView=(TextView)findViewById(R.id.showText);
+        TextView textView=(TextView)findViewById(R.id.show_gua);
 
         Intent intent=getIntent();
         int guaNumber=intent.getIntExtra("guaNumber",0);

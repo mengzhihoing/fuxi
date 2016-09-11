@@ -53,9 +53,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private ImageView homeImage, yuceImage, meImage;
     private TextView homeText, yuceText, meText;
 
+    private Bundle kSavedInstanceState;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        kSavedInstanceState=savedInstanceState;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
@@ -69,9 +72,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
      */
 
     private void initViews() {
-        homeText=(TextView)findViewById(R.id.home_text);
-        yuceText=(TextView)findViewById(R.id.yuce_text);
-        meText=(TextView)findViewById(R.id.me_text);
+        homeText = (TextView) findViewById(R.id.home_text);
+        yuceText = (TextView) findViewById(R.id.yuce_text);
+        meText = (TextView) findViewById(R.id.me_text);
 
         homeImage = (ImageView) findViewById(R.id.message_image);
         yuceImage = (ImageView) findViewById(R.id.contacts_image);
@@ -108,8 +111,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     /**
      * 根据传入的index参数来设置选中的tab页。
      *
-     * @param index
-     * 每个tab页对应的下标。0表示消息，1表示联系人，2表示动态，3表示设置。
+     * @param index 每个tab页对应的下标。0表示消息，1表示联系人，2表示动态，3表示设置。
      */
     private void setTabSelection(int index) {
         // 每次选中之前先清楚掉上次的选中状态
@@ -119,10 +121,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
         // 先隐藏掉所有的Fragment，以防止有多个Fragment显示在界面上的情况
         hideFragments(transaction);
         switch (index) {
-            case 0:
+            case 0: {
                 homeText.setTextColor(this.getResources().getColor(R.color.textSelectedColor));
                 homeImage.setImageResource(R.drawable.home_select);
-                if (homeFragment == null) {
+                if (homeFragment == null&&kSavedInstanceState==null) {
                     // 如果MessageFragment为空，则创建一个并添加到界面上
                     homeFragment = new HomeFragment();
                     transaction.add(R.id.content, homeFragment);
@@ -130,11 +132,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     // 如果MessageFragment不为空，则直接将它显示出来
                     transaction.show(homeFragment);
                 }
-                break;
-            case 1:
+            }
+            break;
+            case 1: {
                 yuceText.setTextColor(this.getResources().getColor(R.color.textSelectedColor));
                 yuceImage.setImageResource(R.drawable.mystudy_select);
-                if (yuceFragment == null) {
+                if (yuceFragment == null&&kSavedInstanceState==null) {
                     // 如果ContactsFragment为空，则创建一个并添加到界面上
                     yuceFragment = new YuceFragment();
                     transaction.add(R.id.content, yuceFragment);
@@ -142,12 +145,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     // 如果ContactsFragment不为空，则直接将它显示出来
                     transaction.show(yuceFragment);
                 }
-                break;
+            }
+            break;
             case 2:
-            default:
+            default: {
                 meText.setTextColor(this.getResources().getColor(R.color.textSelectedColor));
                 meImage.setImageResource(R.drawable.found_select);
-                if (meFragment == null) {
+                if (meFragment == null&&kSavedInstanceState==null) {
                     // 如果NewsFragment为空，则创建一个并添加到界面上
                     meFragment = new MeFragment();
                     transaction.add(R.id.content, meFragment);
@@ -155,7 +159,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     // 如果NewsFragment不为空，则直接将它显示出来
                     transaction.show(meFragment);
                 }
-                break;
+            }
+            break;
         }
         transaction.commit();
     }
@@ -163,8 +168,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     /**
      * 将所有的Fragment都置为隐藏状态。
      *
-     * @param transaction
-     * 用于对Fragment执行操作的事务
+     * @param transaction 用于对Fragment执行操作的事务
      */
     private void hideFragments(FragmentTransaction transaction) {
         if (homeFragment != null) {
