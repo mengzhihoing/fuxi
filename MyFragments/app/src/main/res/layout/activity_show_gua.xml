@@ -1,0 +1,58 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="vertical"-->
+    <!--tools:context="com.example.."-->
+    <!--&gt;-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/aaa"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/purple">
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="25dp"
+            android:background="@drawable/back"
+            android:onClick="back"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_centerInParent="true"
+            />
+
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        />
+
+    </ScrollView>
+
+</LinearLayout>
