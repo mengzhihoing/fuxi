@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -24,46 +25,129 @@ import ninecity.myfragments.R;
  */
 public class YuceFragment extends Fragment {
 
-    private Button buttton;
-    private TextView textView;
-    static SimpleDateFormat chineseDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
-
+    private Button riliButtton,fastButton,cityButton,the9GridButton,bigSmallButton,yearButton;
+    private ImageButton centerButton;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.yuce_layout, container, false);
-        buttton=(Button) view.findViewById(R.id.button);
-        textView=(TextView)view.findViewById(R.id.text);
-        buttton.setOnClickListener(new View.OnClickListener() {
+
+        rili(view);
+        fast(view);
+        city(view);
+        the9Grid(view);
+        bigSmall(view);
+        year(view);
+        center(view);
+
+        return view;
+    }
+
+    public void rili(View view){
+
+        riliButtton=(Button) view.findViewById(R.id.rili);
+        riliButtton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-//                Calendar cal=Calendar.getInstance();
-//                SimpleDateFormat sdf=new SimpleDateFormat("yyyy年MM月dd日");
-//                cal.setTimeZone(TimeZone.getDefault());
-//                System.out.println("公历日期:"+sdf.format(cal.getTime()));
-//                Lunar lunar=new Lunar(cal);
-//                System.out.print("农历日期:");
-//                System.out.print(lunar.year+"年 ");
-//                System.out.print(lunar.month+"月 ");
-//                System.out.print(lunar.getChinaDayString(lunar.day));
-//                System.out.println("*************");
-
-
                 Intent intent=new Intent();
                 intent.setClass(getActivity(),ShowRiliActivity.class);
-//                intent.putExtra("guaNumber",kGuaNumber);
-
                 startActivity(intent);
-
-
             }
 
         });
 
-
-
-        return view;
     }
+
+    public void fast(View view){
+
+        fastButton=(Button) view.findViewById(R.id.fast);
+        fastButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent();
+                intent.setClass(getActivity(),ShowRiliActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+    }
+
+    public void city(View view){
+
+        cityButton=(Button) view.findViewById(R.id.city);
+        cityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent();
+                intent.setClass(getActivity(),ShowRiliActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+    }
+
+    public void the9Grid(View view){
+
+        the9GridButton=(Button) view.findViewById(R.id.the9Grid);
+        the9GridButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent();
+                intent.setClass(getActivity(),ShowRiliActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+    }
+
+    public void bigSmall(View view){
+
+        bigSmallButton=(Button) view.findViewById(R.id.bigSmallYun);
+        bigSmallButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent();
+                intent.setClass(getActivity(),ShowRiliActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+    }
+
+    public void year(View view){
+
+        yearButton=(Button) view.findViewById(R.id.year);
+        yearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent();
+                intent.setClass(getActivity(),ShowRiliActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+    }
+
+    public void center(View view){
+
+        centerButton=(ImageButton) view.findViewById(R.id.center);
+        centerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent();
+                intent.setClass(getActivity(),ShowRiliActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+    }
+
+
+
 }
