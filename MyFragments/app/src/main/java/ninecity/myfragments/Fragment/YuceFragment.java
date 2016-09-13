@@ -16,6 +16,7 @@ import java.util.Calendar;
 import java.util.TimeZone;
 
 import ninecity.myfragments.Activity.DetailActivity;
+import ninecity.myfragments.Activity.FastFetchActivity;
 import ninecity.myfragments.Activity.ShowRiliActivity;
 import ninecity.myfragments.Class.Lunar;
 import ninecity.myfragments.R;
@@ -25,8 +26,7 @@ import ninecity.myfragments.R;
  */
 public class YuceFragment extends Fragment {
 
-    private Button riliButtton,fastButton,cityButton,the9GridButton,bigSmallButton,yearButton;
-    private ImageButton centerButton;
+    private Button riliButtton, fastButton, cityButton, the9GridButton, bigSmallButton, yearButton, centerButton;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,14 +43,14 @@ public class YuceFragment extends Fragment {
         return view;
     }
 
-    public void rili(View view){
+    public void rili(View view) {
 
-        riliButtton=(Button) view.findViewById(R.id.rili);
+        riliButtton = (Button) view.findViewById(R.id.rili);
         riliButtton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent();
-                intent.setClass(getActivity(),ShowRiliActivity.class);
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), ShowRiliActivity.class);
                 startActivity(intent);
             }
 
@@ -58,14 +58,14 @@ public class YuceFragment extends Fragment {
 
     }
 
-    public void fast(View view){
+    public void fast(View view) {
 
-        fastButton=(Button) view.findViewById(R.id.fast);
+        fastButton = (Button) view.findViewById(R.id.fast);
         fastButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent();
-                intent.setClass(getActivity(),ShowRiliActivity.class);
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), FastFetchActivity.class);
                 startActivity(intent);
             }
 
@@ -73,14 +73,14 @@ public class YuceFragment extends Fragment {
 
     }
 
-    public void city(View view){
+    public void city(View view) {
 
-        cityButton=(Button) view.findViewById(R.id.city);
+        cityButton = (Button) view.findViewById(R.id.city);
         cityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent();
-                intent.setClass(getActivity(),ShowRiliActivity.class);
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), ShowRiliActivity.class);
                 startActivity(intent);
             }
 
@@ -88,14 +88,14 @@ public class YuceFragment extends Fragment {
 
     }
 
-    public void the9Grid(View view){
+    public void the9Grid(View view) {
 
-        the9GridButton=(Button) view.findViewById(R.id.the9Grid);
+        the9GridButton = (Button) view.findViewById(R.id.the9Grid);
         the9GridButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent();
-                intent.setClass(getActivity(),ShowRiliActivity.class);
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), ShowRiliActivity.class);
                 startActivity(intent);
             }
 
@@ -103,14 +103,14 @@ public class YuceFragment extends Fragment {
 
     }
 
-    public void bigSmall(View view){
+    public void bigSmall(View view) {
 
-        bigSmallButton=(Button) view.findViewById(R.id.bigSmallYun);
+        bigSmallButton = (Button) view.findViewById(R.id.bigSmallYun);
         bigSmallButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent();
-                intent.setClass(getActivity(),ShowRiliActivity.class);
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), ShowRiliActivity.class);
                 startActivity(intent);
             }
 
@@ -118,14 +118,14 @@ public class YuceFragment extends Fragment {
 
     }
 
-    public void year(View view){
+    public void year(View view) {
 
-        yearButton=(Button) view.findViewById(R.id.year);
+        yearButton = (Button) view.findViewById(R.id.year);
         yearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent();
-                intent.setClass(getActivity(),ShowRiliActivity.class);
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), ShowRiliActivity.class);
                 startActivity(intent);
             }
 
@@ -133,21 +133,20 @@ public class YuceFragment extends Fragment {
 
     }
 
-    public void center(View view){
+    public void center(View view) {
 
-        centerButton=(ImageButton) view.findViewById(R.id.center);
+        centerButton = (Button) view.findViewById(R.id.center);
         centerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent();
-                intent.setClass(getActivity(),ShowRiliActivity.class);
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), ShowRiliActivity.class);
                 startActivity(intent);
             }
 
         });
 
     }
-
 
 
 }

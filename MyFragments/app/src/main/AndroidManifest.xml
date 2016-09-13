@@ -21,8 +21,11 @@
         <activity
             android:name=".Activity.ShowGuaActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".Activity.ShowRiliActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity
+            android:name=".Activity.ShowRiliActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".Activity.FastFetchActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
     </application>
 
 </manifest>
