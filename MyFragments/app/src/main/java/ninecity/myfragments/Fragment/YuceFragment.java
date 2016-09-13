@@ -79,9 +79,9 @@ public class YuceFragment extends Fragment {
         cityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClass(getActivity(), ShowRiliActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent();
+//                intent.setClass(getActivity(), ShowRiliActivity.class);
+//                startActivity(intent);
             }
 
         });
@@ -94,9 +94,9 @@ public class YuceFragment extends Fragment {
         the9GridButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClass(getActivity(), ShowRiliActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent();
+//                intent.setClass(getActivity(), ShowRiliActivity.class);
+//                startActivity(intent);
             }
 
         });
@@ -109,9 +109,9 @@ public class YuceFragment extends Fragment {
         bigSmallButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClass(getActivity(), ShowRiliActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent();
+//                intent.setClass(getActivity(), ShowRiliActivity.class);
+//                startActivity(intent);
             }
 
         });
@@ -124,9 +124,9 @@ public class YuceFragment extends Fragment {
         yearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClass(getActivity(), ShowRiliActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent();
+//                intent.setClass(getActivity(), ShowRiliActivity.class);
+//                startActivity(intent);
             }
 
         });
@@ -139,9 +139,9 @@ public class YuceFragment extends Fragment {
         centerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClass(getActivity(), ShowRiliActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent();
+//                intent.setClass(getActivity(), ShowRiliActivity.class);
+//                startActivity(intent);
             }
 
         });

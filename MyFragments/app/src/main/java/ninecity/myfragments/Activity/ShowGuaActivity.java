@@ -34,14 +34,14 @@ public class ShowGuaActivity extends AppCompatActivity {
         int guaNumber=intent.getIntExtra("guaNumber",0);
         String type=intent.getStringExtra("type");
 
-        Log.i("type",type);
+//        Log.i("type",type);
 
 
         String textViewText=handleString(guaNumber,type);
 
         textView.setText(textViewText);
 
-        Log.i("gua",textViewText);
+//        Log.i("gua",textViewText);
 
 
 

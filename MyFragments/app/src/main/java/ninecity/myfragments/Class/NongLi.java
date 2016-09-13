@@ -249,6 +249,11 @@ public class NongLi {
 
     }
 
+    public String getYinLiRi(){
+
+        return lunarStr[2];
+    }
+
     public int getNongliRi(){
 
         return  (int) lunarInt[2];
