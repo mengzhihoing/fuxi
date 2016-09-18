@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="ninecity.myfragments.Activity.FastFetchActivity">
+    tools:context="ninecity.myfragments.Activity.ChooseGuaActivity">
 
     <RelativeLayout
         android:id="@+id/aaa"
@@ -24,9 +24,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="快捷查询"
+            android:text=""
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:id="@+id/navi_title"/>
 
     </RelativeLayout>
 

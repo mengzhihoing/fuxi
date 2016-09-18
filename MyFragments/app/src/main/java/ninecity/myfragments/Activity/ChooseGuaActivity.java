@@ -1,28 +1,33 @@
 package ninecity.myfragments.Activity;
 
 import android.content.Intent;
-import android.os.StrictMode;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextClock;
 import android.widget.TextView;
+
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import ninecity.myfragments.Class.GuaName;
 import ninecity.myfragments.R;
 
-public class FastFetchActivity extends AppCompatActivity {
-
+public class ChooseGuaActivity extends AppCompatActivity {
     private int guaNumber;
-    private Button showGuaButton, addButton, subButton,fetchButton,detailButton;
-    private TextView textView;
+    private Button showGuaButton, addButton, subButton, fetchButton, detailButton;
+    private TextView textView,titleTextView;
+    boolean isFast;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fast_fetch);
+        setContentView(R.layout.activity_choose_gua);
         guaNumber = 11;
         showGuaButton = (Button) findViewById(R.id.guaButton);
         addButton = (Button) findViewById(R.id.gua_add);
@@ -30,7 +35,8 @@ public class FastFetchActivity extends AppCompatActivity {
         fetchButton = (Button) findViewById(R.id.fetchButton);
         detailButton = (Button) findViewById(R.id.detailButton);
 
-        textView=(TextView) findViewById(R.id.text);
+        textView = (TextView) findViewById(R.id.text);
+        titleTextView = (TextView) findViewById(R.id.navi_title);
 
 
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +66,20 @@ public class FastFetchActivity extends AppCompatActivity {
         });
 
 
+        Intent intent=getIntent();
+        String type=intent.getStringExtra("type");
+
+        if (type.equals("fast")){
+            isFast=true;
+            titleTextView.setText("快捷查询");
+
+        }else {
+            titleTextView.setText("九宫卦");
+            textView.setVisibility(View.INVISIBLE);
+            detailButton.setVisibility(View.INVISIBLE);
+            isFast=false;
+
+        }
 
     }
 
@@ -129,12 +149,11 @@ public class FastFetchActivity extends AppCompatActivity {
         }
 
 
-
-    updateGua();
+        updateGua();
 
     }
 
-    private void updateGua(){
+    private void updateGua() {
 
         GuaName guaname = new GuaName();
 
@@ -147,35 +166,43 @@ public class FastFetchActivity extends AppCompatActivity {
     }
 
 
-    private void showBasicGua(){
-
-//        Intent intent=new Intent();
-//        intent.setClass(this,ListBasicGuaActivity.class);
-//        intent.putExtra("guaNumber",guaNumber);
-//        startActivity(intent);
+    private void showBasicGua() {
 
 
-        GuaName guaName=new GuaName();
 
-        String benMingGua=String.format("本命卦：%s",guaName.getFullBenMing(guaNumber));
-        String successGua=String.format("成功卦：%s",guaName.getFullSuccess(guaNumber));
-        String failureGua=String.format("失败卦：%s",guaName.getFullFailure(guaNumber));
-        String shuaiBianGua=String.format("衰变卦：%s",guaName.getFullShuaiBian(guaNumber));
+        if (isFast) {
+
+            GuaName guaName = new GuaName();
+
+            String benMingGua = String.format("本命卦：%s", guaName.getFullBenMing(guaNumber));
+            String successGua = String.format("成功卦：%s", guaName.getFullSuccess(guaNumber));
+            String failureGua = String.format("失败卦：%s", guaName.getFullFailure(guaNumber));
+            String shuaiBianGua = String.format("衰变卦：%s", guaName.getFullShuaiBian(guaNumber));
 
 
-        String content=String.format(benMingGua+"\n"+successGua+"\n"+failureGua+"\n"+shuaiBianGua);
+            String content = String.format(benMingGua + "\n" + successGua + "\n" + failureGua + "\n" + shuaiBianGua);
 
-        textView.setText(content);
+            textView.setText(content);
 
+        }else {
+
+            Intent intent=new Intent();
+            intent.setClass(this,The9GridActivity.class);
+            intent.putExtra("guaNumber", guaNumber);
+
+            startActivity(intent);
+
+
+        }
 
 
     }
 
-    private void pushToDetail(){
+    private void pushToDetail() {
 
-        Intent intent=new Intent();
-        intent.setClass(this,DetailActivity.class);
-        intent.putExtra("guaNumber",guaNumber);
+        Intent intent = new Intent();
+        intent.setClass(this, DetailActivity.class);
+        intent.putExtra("guaNumber", guaNumber);
 
         startActivity(intent);
     }

@@ -3,22 +3,13 @@ package ninecity.myfragments.Fragment;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.TimeZone;
-
-import ninecity.myfragments.Activity.DetailActivity;
-import ninecity.myfragments.Activity.FastFetchActivity;
+import ninecity.myfragments.Activity.ChooseGuaActivity;
 import ninecity.myfragments.Activity.ShowRiliActivity;
-import ninecity.myfragments.Class.Lunar;
 import ninecity.myfragments.R;
 
 /**
@@ -65,7 +56,8 @@ public class YuceFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
-                intent.setClass(getActivity(), FastFetchActivity.class);
+                intent.setClass(getActivity(), ChooseGuaActivity.class);
+                intent.putExtra("type","fast");
                 startActivity(intent);
             }
 
@@ -94,9 +86,10 @@ public class YuceFragment extends Fragment {
         the9GridButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent();
-//                intent.setClass(getActivity(), ShowRiliActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), ChooseGuaActivity.class);
+                intent.putExtra("type","the9Grid");
+                startActivity(intent);
             }
 
         });
