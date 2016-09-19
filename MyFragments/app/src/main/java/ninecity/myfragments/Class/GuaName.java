@@ -8,23 +8,219 @@ import android.util.Log;
 public class GuaName {
 
 
-
-    private int  getLeftNumber(int number){
+    public int getLeftUpNumber(int number) {
 
         int m = number / 10;
         int n = number % 10;
 
-        int upNumber = handleNameNumber(m + 1) * 10 + n;
+        int upNumber =  handleNumber(m + 1) * 10 + handleNumber(n + 1);
 
         return upNumber;
 
     }
 
-    
 
-    public String getLeftgua() {
+    public String getLeftUpGua(int guaNumber) {
 
         String content = "";
+
+        content = getFullBenMing(getLeftUpNumber(guaNumber));
+
+
+        return content;
+
+
+    }
+
+    public int getUpNumber(int number) {
+
+        int m = number / 10;
+        int n = number % 10;
+
+        int upNumber = handleNumber(m + 1) * 10 + n;
+
+        return upNumber;
+
+    }
+
+
+    public String getUpGua(int guaNumber) {
+
+        String content = "";
+
+        content = getFullBenMing(getUpNumber(guaNumber));
+
+
+        return content;
+
+
+    }
+
+    public int getRightUpNumber(int number) {
+
+        int m = number / 10;
+        int n = number % 10;
+
+        int upNumber = handleNumber(m + 1) * 10 +  handleNumber(n - 1);
+
+        return upNumber;
+
+    }
+
+
+    public String getRightUpGua(int guaNumber) {
+
+        String content = "";
+
+        content = getFullBenMing(getRightUpNumber(guaNumber));
+
+
+        return content;
+
+
+    }
+
+
+    public int getLeftNumber(int number) {
+
+        int m = number / 10;
+        int n = number % 10;
+
+        int upNumber = m * 10 + handleNumber(n + 1);
+
+        return upNumber;
+
+    }
+
+
+    public String getLeftGua(int guaNumber) {
+
+        String content = "";
+
+        content = getFullBenMing(getLeftNumber(guaNumber));
+
+
+        return content;
+
+
+    }
+
+
+    public int getMiddleNumber(int number) {
+
+        int m = number / 10;
+        int n = number % 10;
+
+        int upNumber = number;
+
+        return upNumber;
+
+    }
+
+
+    public String getMiddleGua(int guaNumber) {
+
+        String content = "";
+
+        content = getFullBenMing(getMiddleNumber(guaNumber));
+
+
+        return content;
+
+
+    }
+
+    public int getRightNumber(int number) {
+
+        int m = number / 10;
+        int n = number % 10;
+
+        int upNumber = m * 10 + handleNumber(n - 1);
+
+        return upNumber;
+
+    }
+
+
+    public String getRightGua(int guaNumber) {
+
+        String content = "";
+
+        content = getFullBenMing(getRightNumber(guaNumber));
+
+
+        return content;
+
+
+    }
+
+
+    public int getLeftBottomNumber(int number) {
+
+        int m = number / 10;
+        int n = number % 10;
+
+        int upNumber = handleNumber(m - 1) * 10 +  handleNumber(n + 1);
+
+        return upNumber;
+
+    }
+
+
+    public String getLeftBottomGua(int guaNumber) {
+
+        String content = "";
+
+        content = getFullBenMing(getLeftBottomNumber(guaNumber));
+
+
+        return content;
+
+
+    }
+
+
+    public int getMiddleBottomNumber(int number) {
+
+        int m = number / 10;
+        int n = number % 10;
+
+        int upNumber =   handleNumber(m - 1) * 10 + n;
+
+        return upNumber;
+
+    }
+
+
+    public String getMiddleBottomGua(int guaNumber) {
+
+        String content = "";
+
+        content = getFullBenMing(getMiddleBottomNumber(guaNumber));
+
+
+        return content;
+
+
+    }
+
+    public int getRightBottomNumber(int number) {
+
+        int m = number / 10;
+        int n = number % 10;
+
+        int upNumber = handleNumber(m - 1) * 10 +  handleNumber(n - 1);
+
+        return upNumber;
+
+    }
+
+
+    public String getRightBottomGua(int guaNumber) {
+
+        String content = "";
+
+        content = getFullBenMing(getRightBottomNumber(guaNumber));
 
 
         return content;
