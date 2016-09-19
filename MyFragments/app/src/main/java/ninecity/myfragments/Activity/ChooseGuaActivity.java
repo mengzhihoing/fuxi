@@ -189,7 +189,6 @@ public class ChooseGuaActivity extends AppCompatActivity {
             Intent intent=new Intent();
             intent.setClass(this,The9GridActivity.class);
             intent.putExtra("guaNumber", guaNumber);
-
             startActivity(intent);
 
 

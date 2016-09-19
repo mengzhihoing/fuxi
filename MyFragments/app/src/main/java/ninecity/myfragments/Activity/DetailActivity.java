@@ -40,10 +40,26 @@ public class DetailActivity extends AppCompatActivity {
 
         Button button=(Button) v;
 
-        Intent intent = new Intent(DetailActivity.this, ShowGuaActivity.class);
-        intent.putExtra("guaNumber",kGuaNumber);
-        intent.putExtra("type",button.getText());
-        startActivity(intent);
+
+        String content="";
+
+        content=String.valueOf(button.getText());
+
+        if (!content.equals("九宫卦")) {
+
+            Intent intent = new Intent(DetailActivity.this, ShowGuaActivity.class);
+            intent.putExtra("guaNumber", kGuaNumber);
+            intent.putExtra("type", content);
+            startActivity(intent);
+
+        }else {
+
+            Intent intent=new Intent();
+            intent.setClass(this,The9GridActivity.class);
+            intent.putExtra("guaNumber", kGuaNumber);
+            startActivity(intent);
+
+        }
 
     }
 }

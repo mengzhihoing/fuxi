@@ -60,10 +60,10 @@ public class ShowRiliActivity extends AppCompatActivity {
         currentMonth = month + 1;
         currentYear = year;
 
-        System.out.println("first");
-        System.out.println(String.valueOf(currentYear));
-        System.out.println(String.valueOf(currentMonth));
-        System.out.println(String.valueOf(currentDay));
+//        System.out.println("first");
+//        System.out.println(String.valueOf(currentYear));
+//        System.out.println(String.valueOf(currentMonth));
+//        System.out.println(String.valueOf(currentDay));
 
 
         yearAddButton = (Button) findViewById(R.id.year_add);

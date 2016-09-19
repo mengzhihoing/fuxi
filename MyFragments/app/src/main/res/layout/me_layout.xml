@@ -21,11 +21,65 @@
     </RelativeLayout>
 
     <TextView
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="本软件下载、使用完全免费，限学习交流使用，请勿用于商业目的。\n目前软件处于开发状态功能尚未完全，iOS版可以在app store搜索“伏羲易”下载。\n\n官方QQ群：523683078"/>
+        android:text="本软件下载、使用完全免费，限学习交流使用，请勿用于商业目的。\n目前软件处于开发状态功能尚未完全，iOS版可以在app store搜索“伏羲易”下载。"/>
+
+
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="\n\n官方QQ群：523683078"
+        />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="复制QQ号"
+            android:id="@+id/QQ"
+
+            />
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="\n\n如果你认为该软件不错,那么可以考虑捐赠作者,支付宝账号:lzpszy@163.com"
+       />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="复制支付宝账号"
+        android:id="@+id/donate"
+       />
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CopyRight @2016 鬼谷子. All rights reserved"
+        android:layout_centerInParent="true"
+        />
+
+    </RelativeLayout>
 
 
 </LinearLayout>

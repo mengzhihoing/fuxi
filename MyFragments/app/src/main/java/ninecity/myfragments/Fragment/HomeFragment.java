@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import ninecity.myfragments.Class.ChineseBiHua;
 import ninecity.myfragments.Activity.DetailActivity;
@@ -113,15 +114,13 @@ public class HomeFragment extends Fragment {
 
         if(canGo==false) {
 
-//            Toast.makeText(mcontext,"姓氏和名字必须都有汉字", Toast.LENGTH_LONG);
+            Toast.makeText(getActivity(), "姓氏和名字都必须有汉字", Toast.LENGTH_LONG).show();
 
             Log.i("warning","name is null");
 
         }else {
 
-//            Intent intent = new Intent(mcontext, DetailActivity.class);
-//            intent.putExtra("guaNumber",kGuaNumber);
-//            startActivity(intent);
+
 
             Intent intent=new Intent();
             intent.setClass(mcontext,DetailActivity.class);
