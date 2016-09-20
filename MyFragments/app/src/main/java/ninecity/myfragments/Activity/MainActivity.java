@@ -5,9 +5,15 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVOSCloud;
+import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.SaveCallback;
 
 import ninecity.myfragments.Fragment.HomeFragment;
 import ninecity.myfragments.Fragment.MeFragment;
@@ -65,6 +71,23 @@ public class MainActivity extends Activity implements View.OnClickListener {
         fragmentManager = getFragmentManager();
         // 第一次启动时选中第0个tab
         setTabSelection(0);
+
+        // 初始化参数依次为 this, AppId, AppKey
+        AVOSCloud.initialize(this,"YGS1H2Sm0nJtvSgXp7OYiHhG-gzGzoHsz","qK6GsspUVwtfr1MxjO3TrIru");
+
+
+//        // 测试 SDK 是否正常工作的代码
+//        AVObject testObject = new AVObject("TestObject");
+//        testObject.put("words","Hello World!");
+//        testObject.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(AVException e) {
+//                if(e == null){
+//                    Log.d("saved","success!-朱棣");
+//                }
+//            }
+//        });
+
     }
 
     /**
