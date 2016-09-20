@@ -10,13 +10,17 @@ import android.widget.TextView;
 
 
 import ninecity.myfragments.Class.BenMingDetail;
+import ninecity.myfragments.Class.GuaColor;
 import ninecity.myfragments.Class.GuaName;
+import ninecity.myfragments.Class.YaoCi;
 import ninecity.myfragments.R;
 
 public class ShowGuaActivity extends AppCompatActivity {
 
     private TextView textView1, textView2;
     private View view1, view2, view3, view4;
+
+    BenMingDetail benMingDetail = new BenMingDetail();
 
 
     @Override
@@ -74,16 +78,13 @@ public class ShowGuaActivity extends AppCompatActivity {
         Log.i("log", String.valueOf(isDouble));
 
 
-        BenMingDetail benMingDetail = new BenMingDetail();
         GuaName guaName = new GuaName();
 
 
         if (type.equals("本命卦")) {
 
-            content = String.format("%s \n\n\n\n", benMingDetail.getBenMingDetail(guaNumber));
-            textView1.setText(content);
 
-            hideView();
+            setContent(guaNumber, 0);
 
 
         } else if (type.equals("成功卦")) {
@@ -91,23 +92,9 @@ public class ShowGuaActivity extends AppCompatActivity {
             int gua[] = guaName.getSuccess(guaNumber);
 
             if (isDouble == true) {
-                String text1 = benMingDetail.getBenMingDetail(gua[0]);
-                String text2 = benMingDetail.getBenMingDetail(gua[1]);
-
-
-                content = String.format(text1 + "\n\n\n");
-                String  content2 = String.format(text2 + "\n\n\n");
-
-                textView1.setText(content);
-                textView2.setText(content2);
-
-
-
+                setContent(gua[0], gua[1]);
             } else {
-                String text1 = benMingDetail.getBenMingDetail(gua[0]);
-                content = String.format("%s \n\n\n\n", text1);
-                textView1.setText(content);
-
+                setContent(gua[0], 0);
             }
 
 
@@ -116,22 +103,9 @@ public class ShowGuaActivity extends AppCompatActivity {
             int gua[] = guaName.getFailure(guaNumber);
 
             if (isDouble == true) {
-                String text1 = benMingDetail.getBenMingDetail(gua[0]);
-                String text2 = benMingDetail.getBenMingDetail(gua[1]);
-
-                content = String.format(text1 + "\n\n\n");
-                String  content2 = String.format(text2 + "\n\n\n");
-
-                textView1.setText(content);
-                textView2.setText(content2);
-
+                setContent(gua[0], gua[1]);
             } else {
-                String text1 = benMingDetail.getBenMingDetail(gua[0]);
-                content = String.format("%s \n\n\n\n", text1);
-
-                textView1.setText(content);
-                hideView();
-
+                setContent(gua[0], 0);
             }
 
         } else {
@@ -140,25 +114,36 @@ public class ShowGuaActivity extends AppCompatActivity {
             int gua[] = guaName.getShuaiBian(guaNumber);
 
             if (isDouble == true) {
-                String text1 = benMingDetail.getBenMingDetail(gua[0]);
-                String text2 = benMingDetail.getBenMingDetail(gua[1]);
-
-                content = String.format(text1 + "\n\n\n");
-                String  content2 = String.format(text2 + "\n\n\n");
-
-                textView1.setText(content);
-                textView2.setText(content2);
-
+                setContent(gua[0], gua[1]);
             } else {
-                String text1 = benMingDetail.getBenMingDetail(gua[0]);
-                content = String.format("%s \n\n\n\n", text1);
-
-                textView1.setText(content);
-                hideView();
+                setContent(gua[0], 0);
             }
 
         }
 
+
+    }
+
+
+    private void setViewColor(int number1, int number2) {
+
+        GuaColor color = new GuaColor();
+
+        int pre1 = number1 / 10;
+        int next1 = number1 % 10;
+
+        view1.setBackgroundColor(color.getGuaColor(next1, this));
+        view2.setBackgroundColor(color.getGuaColor(pre1, this));
+
+
+        if (number2 > 0) {
+
+            int pre2 = number2 / 10;
+            int next2 = number2 % 10;
+
+            view3.setBackgroundColor(color.getGuaColor(next2, this));
+            view4.setBackgroundColor(color.getGuaColor(pre2, this));
+        }
 
     }
 
@@ -171,11 +156,36 @@ public class ShowGuaActivity extends AppCompatActivity {
     }
 
 
-    public int getGuaColor(int number){
+    private void setContent(int number1, int number2) {
 
+        setViewColor(number1, number2);
 
-        return (this.getResources().getColor(R.color.gray));
+        String content1 = "";
+        String text1 = benMingDetail.getBenMingDetail(number1);
+
+        String yaoci1 = "";
+
+        YaoCi yaoCi = new YaoCi();
+        yaoci1 = yaoCi.getFullYaoCi(number1);
+
+        content1 = String.format(text1 + "\n\n\n"+ yaoci1+"\n\n\n");
+        textView1.setText(content1);
+
+        if (number2 > 0) {
+            String content2 = "";
+            String text2 = benMingDetail.getBenMingDetail(number2);
+
+            String yaoci2 = "";
+            yaoci2 = yaoCi.getFullYaoCi(number2);
+
+            content2 = String.format(text2 + "\n\n\n"+yaoci2+"\n\n\n");
+            textView2.setText(content2);
+        } else {
+            hideView();
+        }
+
 
     }
+
 
 }

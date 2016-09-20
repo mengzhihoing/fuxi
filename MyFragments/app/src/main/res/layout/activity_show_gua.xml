@@ -115,7 +115,7 @@
                         android:layout_width="100dp"
                         android:layout_height="50dp"
                         android:layout_centerHorizontal="true"
-                        android:background="@color/red"
+                        android:background="@color/yellow"
                         android:id="@+id/view3"
 
                         >
@@ -133,7 +133,7 @@
                         android:layout_width="100dp"
                         android:layout_height="50dp"
                         android:layout_centerHorizontal="true"
-                        android:background="@color/green"
+                        android:background="@color/purple"
                         android:id="@+id/view4"
 
                         >

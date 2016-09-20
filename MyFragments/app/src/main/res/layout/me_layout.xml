@@ -26,7 +26,7 @@
         android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="本软件下载、使用完全免费，限学习交流使用，请勿用于商业目的。\n目前软件处于开发状态功能尚未完全，iOS版可以在app store搜索“伏羲易”下载。"/>
+        android:id="@+id/show_version"/>
 
 
 

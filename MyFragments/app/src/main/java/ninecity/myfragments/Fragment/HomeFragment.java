@@ -16,6 +16,7 @@ import android.widget.Toast;
 import ninecity.myfragments.Class.ChineseBiHua;
 import ninecity.myfragments.Activity.DetailActivity;
 import ninecity.myfragments.Class.GuaName;
+import ninecity.myfragments.Class.YaoCi;
 import ninecity.myfragments.R;
 
 /**
@@ -88,6 +89,8 @@ public class HomeFragment extends Fragment {
                 }
 
                 textView.setText(describe);
+
+
 
             }
 
