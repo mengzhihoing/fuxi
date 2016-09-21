@@ -1,16 +1,9 @@
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:tools="http://schemas.android.com/tools"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:paddingBottom="@dimen/activity_vertical_margin"-->
-    <!--tools:context="com.example.mengzhihong.myapplication.Home.DetailActivity"-->
-    <!--android:orientation="vertical">-->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+   >
 
 
     <RelativeLayout
@@ -39,44 +32,15 @@
     </RelativeLayout>
 
 
-    <Button
+
+
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="本命卦"
-        android:layout_marginTop="20dp"
-        android:onClick="showGua"
-        />
+        android:id="@+id/listView"
+        >
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="成功卦"
-        android:onClick="showGua"
-        />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="失败卦"
-        android:onClick="showGua"
-        />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="衰变卦"
-        android:onClick="showGua"
-        />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="九宫卦"
-        android:onClick="showGua"
-        />
-
-
-
+    </ListView>
 
 
     </LinearLayout>

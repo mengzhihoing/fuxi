@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import ninecity.myfragments.Activity.BigSmallYunActivity;
 import ninecity.myfragments.Activity.CenturyActivity;
 import ninecity.myfragments.Activity.ChooseGuaActivity;
 import ninecity.myfragments.Activity.ShowRiliActivity;
@@ -105,9 +106,9 @@ public class YuceFragment extends Fragment {
         bigSmallButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent();
-//                intent.setClass(getActivity(), ShowRiliActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), BigSmallYunActivity.class);
+                startActivity(intent);
             }
 
         });
