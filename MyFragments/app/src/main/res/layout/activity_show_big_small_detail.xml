@@ -48,15 +48,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp" />
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"/>
 
 
-                <ListView
-                    android:id="@+id/listView"
+                <ninecity.myfragments.Class.ListViewForScrollView
+                    android:id="@+id/scrollListView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                </ListView>
+                </ninecity.myfragments.Class.ListViewForScrollView>
 
 
             </LinearLayout>

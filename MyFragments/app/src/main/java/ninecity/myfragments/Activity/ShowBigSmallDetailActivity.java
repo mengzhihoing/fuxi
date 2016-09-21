@@ -9,6 +9,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import ninecity.myfragments.Class.ListViewForScrollView;
 import ninecity.myfragments.Class.NongLi;
 import ninecity.myfragments.Class.YaoCi;
 import ninecity.myfragments.R;
@@ -67,9 +68,8 @@ public class ShowBigSmallDetailActivity extends AppCompatActivity {
         showDetailTextView.setText(content);
 
 
-        ListView listView=(ListView)findViewById(R.id.listView);
-
-        String[] dataArray={"1","2","3","4","5","6","7","8","9"};
+        ListViewForScrollView listView=(ListViewForScrollView)findViewById(R.id.scrollListView);
+        String[] dataArray={"1adfafafsfasfsf  fsafdsfdsfsafsdfs","2fsdafsdaffsfsfaf","3fsdafsdfs","4fsdfsaf","5fsfdsfdfsf","6fsdfs","7fsdfsaffasfdsdfa","8fdsafsdafdsafdsf","9fsdfdsafdsdsfafdfsfdffd"};
 
         ListAdapter adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,dataArray);
         listView.setAdapter(adapter);
