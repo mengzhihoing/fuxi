@@ -14,6 +14,7 @@ import android.widget.ListView;
 import com.avos.avoscloud.feedback.FeedbackAgent;
 
 import ninecity.myfragments.Activity.AboutActivity;
+import ninecity.myfragments.Activity.EyesActivity;
 import ninecity.myfragments.R;
 
 /**
@@ -54,6 +55,10 @@ public class MeFragment extends Fragment {
 
                     break;
                     case 2: {
+
+                        Intent intent=new Intent();
+                        intent.setClass(getActivity(), EyesActivity.class);
+                        startActivity(intent);
 
                     }
 

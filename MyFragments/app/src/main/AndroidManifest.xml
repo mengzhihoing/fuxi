@@ -64,11 +64,9 @@
         <activity
             android:name=".Activity.AboutActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name="com.avos.avoscloud.feedback.ThreadActivity"></activity>
+        <activity android:name=".Activity.EyesActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+    </application>
 
-        <activity
-            android:name="com.avos.avoscloud.feedback.ThreadActivity" >
-
-    </activity>
-</application>
-
-    </manifest>
+</manifest>
