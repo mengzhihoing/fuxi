@@ -1,19 +1,19 @@
 package ninecity.myfragments.Fragment;
 
 import android.app.Fragment;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
+import com.avos.avoscloud.feedback.FeedbackAgent;
+
+import ninecity.myfragments.Activity.AboutActivity;
 import ninecity.myfragments.R;
 
 /**
@@ -21,48 +21,60 @@ import ninecity.myfragments.R;
  */
 public class MeFragment extends Fragment {
 
-    private Button qqButton, zhifubaoButton;
-    private TextView textView;
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View messageLayout = inflater.inflate(R.layout.me_layout, container, false);
 
 
-        qqButton = (Button) messageLayout.findViewById(R.id.QQ);
-        zhifubaoButton = (Button) messageLayout.findViewById(R.id.donate);
-        textView = (TextView) messageLayout.findViewById(R.id.show_version);
+        String[] dataArray = {"意见反馈", "检查更新", "眼跳预测", "关于"};
 
-        showContent();
+        ListView listView = (ListView) messageLayout.findViewById(R.id.meListView);
 
+        ListAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, dataArray);
+        listView.setAdapter(adapter);
 
-        qqButton.setOnClickListener(new View.OnClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i) {
 
-                ClipboardManager cmb = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-                cmb.setText("523683078");
+                    case 0: {
 
-                Toast.makeText(getActivity(), "复制成功", Toast.LENGTH_LONG).show();
+                        FeedbackAgent agent = new FeedbackAgent(getActivity());
+                        agent.startDefaultThreadActivity();
+
+                    }
+
+                    break;
+
+                    case 1: {
+
+                    }
+
+                    break;
+                    case 2: {
+
+                    }
+
+                    break;
 
 
+                    default: {
+                        Intent intent = new Intent();
+                        intent.setClass(getActivity(), AboutActivity.class);
+                        startActivity(intent);
+                    }
+
+                    break;
+
+
+                }
             }
         });
 
 
-        zhifubaoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                ClipboardManager cmb = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-                cmb.setText("lzpszy@163.com");
-
-                Toast.makeText(getActivity(), "复制成功", Toast.LENGTH_LONG).show();
-
-
-            }
-        });
-
+//
 
         return messageLayout;
 
@@ -70,33 +82,4 @@ public class MeFragment extends Fragment {
     }
 
 
-    private void showContent() {
-
-
-        String content = "版本:";
-
-        String v = "";
-
-        try {
-            v = getVersionName().toString();
-            content += v;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        content += "\n\n本软件下载、使用完全免费，限学习交流使用，请勿用于商业目的。\n iOS版可以在app store搜索“伏羲易”下载。\n\n目前缺大小运和城市卦,预计11完成.有任何问题请在群里反映\n";
-
-        textView.setText(content);
-
-    }
-
-
-    private String getVersionName() throws Exception {
-        // 获取packagemanager的实例
-        PackageManager packageManager = getActivity().getPackageManager();
-        // getPackageName()是你当前类的包名，0代表是获取版本信息
-        PackageInfo packInfo = packageManager.getPackageInfo(getActivity().getPackageName(), 0);
-        String version = packInfo.versionName;
-        return version;
-    }
 }

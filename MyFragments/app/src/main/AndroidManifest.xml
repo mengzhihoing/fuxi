@@ -58,8 +58,17 @@
         <activity
             android:name=".Activity.BigSmallYunActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".Activity.ShowBigSmallDetailActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-    </application>
+        <activity
+            android:name=".Activity.ShowBigSmallDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Activity.AboutActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
-</manifest>
+        <activity
+            android:name="com.avos.avoscloud.feedback.ThreadActivity" >
+
+    </activity>
+</application>
+
+    </manifest>
