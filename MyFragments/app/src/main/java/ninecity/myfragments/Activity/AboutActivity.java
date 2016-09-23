@@ -73,11 +73,12 @@ public class AboutActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        content += "\n\n本软件下载、使用完全免费，限学习交流使用，请勿用于商业目的。\n iOS版可以在app store搜索“伏羲易”下载。\n\n目前缺大小运和城市卦,预计11完成.有任何问题请在群里反映\n";
+        content += "\n\n本软件下载、使用完全免费，限学习交流使用，请勿用于商业目的。\n iOS版可以在app store搜索“伏羲易”下载。";
 
         textView.setText(content);
 
     }
+
 
 
     private String getVersionName() throws Exception {
@@ -88,7 +89,6 @@ public class AboutActivity extends AppCompatActivity {
         String version = packInfo.versionName;
         return version;
     }
-
 
     public void back(View view){
         finish();
