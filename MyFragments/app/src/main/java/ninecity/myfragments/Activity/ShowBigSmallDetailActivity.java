@@ -10,10 +10,12 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ninecity.myfragments.Class.BigSmallDate;
 import ninecity.myfragments.Class.BigSmallYun;
+import ninecity.myfragments.Class.ChineseBiHua;
 import ninecity.myfragments.Class.ListViewForScrollView;
 import ninecity.myfragments.Class.NongLi;
 import ninecity.myfragments.Class.YaoCi;
@@ -79,14 +81,38 @@ public class ShowBigSmallDetailActivity extends AppCompatActivity {
 
             BigSmallDate bigSmallDate=new BigSmallDate();
 
+//             小运周期
             List zhouQiList= bigSmallYun.getSortedAllXiaoYunZhouQi(yaociList,month);
+//爻辞
+            List sortedYaoCiList=  bigSmallYun.getSortedYaoCi(yaociList,month);
+
+            int[] dateArray={year,month,day};
 
 
-//            int[] dateArray={year,month,day};
+
+            List dateList=bigSmallDate.getSmallYunDate(dateArray,zhouQiList,sortedYaoCiList);
+
+
+
+            List finalList=new ArrayList();
+
+            ChineseBiHua chineseBiHua=new ChineseBiHua();
+
+            for (int i=0;i<yaoZiList.size();i++){
+
+                String biHua=String.format("%02d画",chineseBiHua.getContentCount(String.valueOf(yaoZiList.get(i))));
+
+                String result=String.format("%s %s %s",yaoZiList.get(i),dateList.get(i),biHua);
+                finalList.add(result);
+
+            }
+
+
+//            Log.v("date",String.valueOf(dateList));
 //
-//            List dateList=bigSmallDate.getSmallYunDate(dateArray,zhouQiList,bigSmallYun.getSortedYaoCi(yaociList,month));
 
-            ListAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, yaoZiList);
+
+            ListAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, finalList);
             listView.setAdapter(adapter);
 
 
@@ -95,7 +121,7 @@ public class ShowBigSmallDetailActivity extends AppCompatActivity {
         }
 
 
-        showDetailTextView.setBackgroundColor(this.getResources().getColor(R.color.cyan));
+        showDetailTextView.setBackgroundColor(this.getResources().getColor(R.color.bigSmallBack));
         showDetailTextView.setText(content);
 
 

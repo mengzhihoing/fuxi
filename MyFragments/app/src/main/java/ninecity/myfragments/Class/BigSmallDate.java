@@ -21,34 +21,38 @@ public class BigSmallDate {
 
         for (int i = 0; i < zhouQiList.size(); i++) {
 
-            List subZhouqi = (List) zhouQiList.get(i);
+            int[] subZhouqi = (int[]) zhouQiList.get(i);
 
             int count = getYaoCiLength(String.valueOf(yaoCiList.get(i)));
 //          装的是list,有日期数组,新日期数组
-            List list = getXiaoYunWithBirthDayDate(date, zhouQiList, count);
+            List list = getXiaoYunWithBirthDayDate(newDate, subZhouqi, count);
+
+
+
+
 
 
             List temtList = (List) list.get(list.size() - 1);
 
             newDate = getLastDate(temtList);
 
-            List resultList = new ArrayList();
 
             for (int j=0;j<list.size();j++){
 
-                List dateList=(List) list.get(i);
+                List dateList=(List) list.get(j);
 
                 int[] pre=(int[]) dateList.get(0);
                 int[] next=(int[]) dateList.get(1);
 
                 String content=String.format("%d年%d月%d日-%d年%d月%d日",pre[0],pre[1],pre[2],next[0],next[1],next[2]);
 
-                resultList.add(content);
+                mList.add(content);
+
+
 
             }
 
 
-            mList.add(resultList);
 
 
         }
@@ -75,7 +79,7 @@ public class BigSmallDate {
     }
 
 
-    private List getXiaoYunWithBirthDayDate(int[] date, List zhouQiList, int count) {
+    private List getXiaoYunWithBirthDayDate(int[] date, int[] zhouQiList, int count) {
 
 
         int nian = date[0];
@@ -83,10 +87,10 @@ public class BigSmallDate {
         int ri = date[2];
 
 
-        int cycleNian = (int) (zhouQiList.get(0));
-        int cycleYue = (int) (zhouQiList.get(1));
-        int cycleRi = (int) (zhouQiList.get(2));
-        int cycleYuRi = (int) (zhouQiList.get(3));
+        int cycleNian = zhouQiList[0];
+        int cycleYue =  zhouQiList[1];
+        int cycleRi =  zhouQiList[2];
+        int cycleYuRi =  zhouQiList[3];
         int firstYear = nian;
 
         List mList = new ArrayList();
@@ -94,7 +98,10 @@ public class BigSmallDate {
         for (int i = 0; i < count; i++) {
 
 
-            String dateStr = String.format("%d年%.2d月%.2d日", nian, yue, ri);
+//            String dateStr = String.format("%d年%.2d月%.2d日", nian, yue, ri);
+
+            int[] dateArray = {nian, yue, ri};
+
 
             //      calculate day
             ri += cycleRi;
@@ -136,14 +143,17 @@ public class BigSmallDate {
 //
 //            String result = String.format("%s-%s", dateStr, newDateStr);
 
-            int[] dateArray = {nian, yue, ri};
             int[] newDateArray = handleLastDateWithNian(nian, yue, ri);
 
+
+            String content=String.format("%d年%d月%d日-%d年%d月%d日",dateArray[0],dateArray[1],dateArray[2],newDateArray[0],newDateArray[1],newDateArray[2]);
+
+            Log.v("hh",content);
+
             List tempList = new ArrayList();
-
-
             tempList.add(dateArray);
             tempList.add(newDateArray);
+
 
             mList.add(tempList);
 
@@ -299,10 +309,10 @@ public class BigSmallDate {
         int[] array = (int[]) date.get(1);
 
 
-        int[] newaArray = {array[0], array[1], array[2] + 1};
+        int[] newArray = {array[0], array[1], array[2] + 1};
 
 
-        return newaArray;
+        return newArray;
 
     }
 

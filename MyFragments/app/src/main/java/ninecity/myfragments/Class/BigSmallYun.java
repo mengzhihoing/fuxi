@@ -10,7 +10,9 @@ import java.util.List;
  */
 public class BigSmallYun {
 
-    private List getSmallYunZhouqiArray(String yaoCi) {
+
+//    小运周期  1 1 3 0
+    private int[] getSmallYunZhouqiArray(String yaoCi) {
 
         int number1 = 10;
         int number2 = 0;
@@ -39,35 +41,23 @@ public class BigSmallYun {
         int shengYuRi = shengYuYue * 30 - ri * number2;
 
 
-        List arrayList = new ArrayList();
-//        arrayList.add(String.valueOf(nian));
-//        arrayList.add(String.valueOf(yue));
-//        arrayList.add(String.valueOf(ri));
-//        arrayList.add(String.valueOf(shengYuRi));
-        arrayList.add(nian);
-        arrayList.add(yue);
-        arrayList.add(ri);
-        arrayList.add(shengYuRi);
 
+        int[] array={nian,yue,ri,shengYuRi};
 
-//        Log.v("index", String.valueOf(arrayList));
-
-
-        return arrayList;
+        return array;
 
     }
 
 
-//    获取整个
-
-    private List getAllSmallYunZhouqiArray(List list) {
+//    获取整个小运周期 {[1,2,0,0],[1,2,0,0],}
+    private List getAllSmallYunZhouqiArray(List yaociList) {
 
         List arrayList = new ArrayList();
 
-        for (int i = 0; i < list.size(); i++) {
-            String yaoci = list.get(i).toString();
+        for (int i = 0; i < yaociList.size(); i++) {
+            String yaoci = yaociList.get(i).toString();
 
-            List tmpList = getSmallYunZhouqiArray(yaoci);
+            int[] tmpList = getSmallYunZhouqiArray(yaoci);
 
             arrayList.add(tmpList);
 
@@ -172,9 +162,9 @@ public class BigSmallYun {
     }
 
 
-    public List getSortedAllXiaoYunZhouQi(List list,int month){
+    public List getSortedAllXiaoYunZhouQi(List yaociList,int month){
 
-        List cycle=getAllSmallYunZhouqiArray(list);
+        List cycle=getAllSmallYunZhouqiArray(yaociList);
 
         return sortedArrayWithArray(cycle,month);
 
@@ -214,7 +204,7 @@ public class BigSmallYun {
 
             content+=liveArray[i];
 
-            List tempList = (List) list.get(i);
+            int[] tempList = (int[]) list.get(i);
             content += handleZhouQi(tempList);
             content+="\n";
 
@@ -231,21 +221,21 @@ public class BigSmallYun {
     }
 
 
-    private String handleZhouQi(List list){
+    private String handleZhouQi(int[] list){
 
 
-        return String.format("%s年%s月%s日%s日剩余",list.get(0),list.get(1),list.get(2),list.get(3));
+        return String.format("%d年%d月%d日%d日剩余",list[0],list[1],list[2],list[3]);
 
     }
 
 
-    private String hanldList(List list){
+    private String hanldList(List listArray){
 
 
         String content="";
 
-        for (int i=0;i<list.size();i++){
-            content+=list.get(i).toString();
+        for (int i=0;i<listArray.size();i++){
+            content+=String.valueOf(listArray.get(i));
             content+="\n";
         }
 
