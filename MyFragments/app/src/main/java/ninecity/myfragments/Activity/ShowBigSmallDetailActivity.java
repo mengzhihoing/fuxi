@@ -3,12 +3,17 @@ package ninecity.myfragments.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.List;
+
+import ninecity.myfragments.Class.BigSmallDate;
+import ninecity.myfragments.Class.BigSmallYun;
 import ninecity.myfragments.Class.ListViewForScrollView;
 import ninecity.myfragments.Class.NongLi;
 import ninecity.myfragments.Class.YaoCi;
@@ -25,8 +30,6 @@ public class ShowBigSmallDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_show_big_small_detail);
 
 
-
-
         Intent intent = getIntent();
 
         String type = intent.getStringExtra("type");
@@ -35,7 +38,7 @@ public class ShowBigSmallDetailActivity extends AppCompatActivity {
         int year = intent.getIntExtra("year", 0);
         int month = intent.getIntExtra("month", 0);
         int day = intent.getIntExtra("day", 0);
-        int guaNumber=intent.getIntExtra("guaNumber",0);
+        int guaNumber = intent.getIntExtra("guaNumber", 0);
         String yearString = String.format("%d年", year);
         String monthString = String.format("%d月", month);
         String dayStrig = String.format("%d日", day);
@@ -43,36 +46,58 @@ public class ShowBigSmallDetailActivity extends AppCompatActivity {
         NongLi nongLi = new NongLi(year, month, day);
         nongLi.printLunar();
 
-        String yinli =nongLi.getFullNongli();
+        String yinli = nongLi.getFullNongli();
 
-        String guaString=String.valueOf(guaNumber);
-
-        YaoCi yaoci=new YaoCi();
-
-        String yaociString=yaoci.getFullYaoCi(guaNumber);
+        String guaString = String.valueOf(guaNumber);
 
 
-        String content="姓: "+xing+"\n"+"名: "+name+"\n"+"出生日期: "+yearString+monthString+dayStrig+"\n农历: "+yinli+"\n\n"+yaociString;
+        String content = "姓: " + xing + "\n" + "名: " + name + "\n" + "出生日期: " + yearString + monthString + dayStrig + "\n农历: " + yinli + "\n\n";
 
 
-        titleTextView=(TextView)findViewById(R.id.titleTextView);
-        showDetailTextView=(TextView)findViewById(R.id.showDetailTextView);
+        titleTextView = (TextView) findViewById(R.id.titleTextView);
+        showDetailTextView = (TextView) findViewById(R.id.showDetailTextView);
 
-        if (type.equals("small")){
+
+        YaoCi yaoCi = new YaoCi();
+//
+        BigSmallYun bigSmallYun = new BigSmallYun();
+
+        List yaociList = yaoCi.getYaoCi(guaNumber);
+
+
+        ListViewForScrollView listView = (ListViewForScrollView) findViewById(R.id.scrollListView);
+
+
+        if (type.equals("small")) {
             titleTextView.setText("小运");
-        }else {
+
+
+            content += bigSmallYun.getFullXiaoYunYaoCiAndZhouQi(yaociList, month);
+
+
+            List yaoZiList = bigSmallYun.getXiaoYunYaoZi(yaociList, month);
+
+            BigSmallDate bigSmallDate=new BigSmallDate();
+
+            List zhouQiList= bigSmallYun.getSortedAllXiaoYunZhouQi(yaociList,month);
+
+
+//            int[] dateArray={year,month,day};
+//
+//            List dateList=bigSmallDate.getSmallYunDate(dateArray,zhouQiList,bigSmallYun.getSortedYaoCi(yaociList,month));
+
+            ListAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, yaoZiList);
+            listView.setAdapter(adapter);
+
+
+        } else {
             titleTextView.setText("大运");
         }
 
 
+        showDetailTextView.setBackgroundColor(this.getResources().getColor(R.color.cyan));
         showDetailTextView.setText(content);
 
-
-        ListViewForScrollView listView=(ListViewForScrollView)findViewById(R.id.scrollListView);
-        String[] dataArray={"1adfafafsfasfsf  fsafdsfdsfsafsdfs","2fsdafsdaffsfsfaf","3fsdafsdfs","4fsdfsaf","5fsfdsfdfsf","6fsdfs","7fsdfsaffasfdsdfa","8fdsafsdafdsafdsf","9fsdfdsafdsdsfafdfsfdffd"};
-
-        ListAdapter adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,dataArray);
-        listView.setAdapter(adapter);
 
     }
 

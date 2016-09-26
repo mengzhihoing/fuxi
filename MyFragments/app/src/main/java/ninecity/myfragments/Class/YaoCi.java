@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class YaoCi {
 
-    public String getYaoCi(int number) {
+    public List getYaoCi(int number) {
 
         String content = "";
 
@@ -743,16 +743,16 @@ public class YaoCi {
         }
 
 
-        for (int i=0;i<list.size();i++){
-            content+=list.get(i).toString();
-            content+="\n";
-        }
+//        for (int i=0;i<list.size();i++){
+//            content+=list.get(i).toString();
+//            content+="\n";
+//        }
 
 
 
 
 
-        return content;
+        return list;
 
     }
 

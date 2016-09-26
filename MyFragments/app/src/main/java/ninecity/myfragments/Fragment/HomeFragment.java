@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
+import ninecity.myfragments.Class.BigSmallYun;
 import ninecity.myfragments.Class.ChineseBiHua;
 import ninecity.myfragments.Activity.DetailActivity;
 import ninecity.myfragments.Class.GuaName;
@@ -36,6 +39,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.home_layout, container, false);
+
 
 
         mcontext = getActivity();
