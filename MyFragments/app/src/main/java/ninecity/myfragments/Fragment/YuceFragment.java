@@ -2,6 +2,7 @@ package ninecity.myfragments.Fragment;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -78,6 +79,10 @@ public class YuceFragment extends Fragment {
 //                Intent intent = new Intent();
 //                intent.setClass(getActivity(), ShowRiliActivity.class);
 //                startActivity(intent);
+
+                Intent it = new Intent(Intent.ACTION_VIEW, Uri.parse("https://raw.githubusercontent.com/mengzhihoing/json/master/fuxiyi.apk"));
+                it.setClassName("com.android.browser", "com.android.browser.BrowserActivity");
+                getActivity().startActivity(it);
             }
 
         });

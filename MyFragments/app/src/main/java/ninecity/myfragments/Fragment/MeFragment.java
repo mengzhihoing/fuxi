@@ -2,11 +2,13 @@ package ninecity.myfragments.Fragment;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,6 +29,7 @@ import com.avos.avoscloud.feedback.FeedbackAgent;
 
 import ninecity.myfragments.Activity.AboutActivity;
 import ninecity.myfragments.Activity.EyesActivity;
+import ninecity.myfragments.Activity.ShowRiliActivity;
 import ninecity.myfragments.R;
 
 /**
@@ -74,8 +77,6 @@ public class MeFragment extends Fragment {
                             e.printStackTrace();
                         }
 
-                        Log.v("e1", String.valueOf(currentVersion));
-
 
 //                        版本更新
                         AVQuery<AVObject> avQuery = new AVQuery<>("androidVersion");
@@ -85,8 +86,15 @@ public class MeFragment extends Fragment {
                             public void done(AVObject avObject, AVException e) {
                                 if (e == null) {
                                     // 成功
-                                    double version = avObject.getDouble("version");
+                                    double version = avObject.getDouble("newVersion");
                                     String content = avObject.getString("content");
+                                 final String url = avObject.getString("url");
+
+
+                                    String result=String.format("current=%f,last=%f,url=%s",finalCurrentVersion,version,url);
+
+                                    Log.v("e1", result);
+
 
                                     if (finalCurrentVersion < version) {
 
@@ -94,11 +102,26 @@ public class MeFragment extends Fragment {
 
                                                 .setTitle("发现新版本")
 
-                                                .setMessage("请在腾讯应用宝中下载新版本\n" + content)
+                                                .setMessage("如果无法下载,请在腾讯应用宝中下载新版本\n" + content)
 
-                                                .setPositiveButton("确定", null)
+                                                .setNegativeButton("取消",null)
 
-                                                .show();
+                                                .setPositiveButton("更新", new DialogInterface.OnClickListener(){
+                                                    public void onClick(DialogInterface dialoginterface, int i){
+                                                        //按钮事件
+                                                        Log.v("e1", "updateApp");
+
+                                                        Intent it = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                                                        it.setClassName("com.android.browser", "com.android.browser.BrowserActivity");
+                                                        getActivity().startActivity(it);
+
+
+                                                    }
+                                                }).show();
+
+
+
+//
                                     } else {
                                         Toast.makeText(getActivity(), "当前是最新版", Toast.LENGTH_LONG).show();
                                     }
