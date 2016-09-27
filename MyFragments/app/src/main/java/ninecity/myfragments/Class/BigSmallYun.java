@@ -201,8 +201,6 @@ public class BigSmallYun {
         }
 
 
-
-
         return content;
 
 
@@ -326,18 +324,22 @@ public class BigSmallYun {
     }
 
 
-//    大运爻字
-    public List getDaYunYaoZi(String yaoCi, int month) {
+    //    大运爻字
+    public List getDaYunYaoZi(String yaoCi, int month, int ri) {
 
-        int index = getIndexWithMonth(month);
+        int length = getYaoCiLength(yaoCi);
+
+        int index = getRenShenQishiDian(month, ri, length);
 
         index--;
 
-        if (yaoCi.length() == 16 || yaoCi.length() == 6) {
+        if (length == 16 || length == 6) {
             index--;
         }
 
-        String chunYaoZi=getChunYaozi(yaoCi);
+        Log.v("index99", String.valueOf(index));
+
+        String chunYaoZi = getChunYaozi(yaoCi);
 
         List pre = new ArrayList();
         List next = new ArrayList();
@@ -366,6 +368,9 @@ public class BigSmallYun {
         handleArray(lastList, next);
 
 
+        Log.v("index", String.valueOf(lastList));
+
+
         return lastList;
 
 
@@ -390,7 +395,7 @@ public class BigSmallYun {
 
     private String getChunYaozi(String yaoci) {
 
-        List newList=new ArrayList();
+        List newList = new ArrayList();
 
         for (int j = 3; j < yaoci.length(); j++) {
             String yaoZi = yaoci.substring(j, j + 1);
@@ -398,14 +403,97 @@ public class BigSmallYun {
 
         }
 
-        String content="";
+        String content = "";
 
-        for (int i=0;i<newList.size();i++){
+        for (int i = 0; i < newList.size(); i++) {
 
-            content+=(String) newList.get(i);
+            content += (String) newList.get(i);
         }
 
         return content;
+
+    }
+
+
+    private int getRenShenQishiDian(int yue, int ri, int hanZiShu) {
+        if (yue % 2 == 0) {
+            int num = 0;
+
+            int newRi = 30 + ri;
+
+            num = newRi * hanZiShu / 60;
+
+            if (newRi * hanZiShu < 60) {
+                return 1;
+            } else {
+
+                if (canChujinWithChuShu(newRi * hanZiShu, 60)) {
+                    Log.v("chujin", "yes");
+                    return num;
+                } else {
+                    Log.v("buchujin", "yes");
+
+                    return num + 1;
+                }
+            }
+
+        } else {
+            int num = 0;
+
+            int newRi = ri;
+
+            num = newRi * hanZiShu / 60;
+
+            //      小于60
+            if (newRi * hanZiShu < 60) {
+                return 1;
+            } else {
+
+                if (canChujinWithChuShu(newRi * hanZiShu, 60)) {
+                    Log.v("chujin1", "yes");
+
+                    return num;
+                } else {
+                    Log.v("buchujin1", "yes");
+
+                    return num + 1;
+                }
+            }
+        }
+
+//        return 0;
+
+
+    }
+
+
+    private boolean canChujinWithChuShu(int chuShu, int beiChuShu) {
+        if (beiChuShu == 0) {
+            return false;
+        } else {
+
+            float beichuNUmber = beiChuShu;
+            float tempNum = chuShu / beichuNUmber;
+
+
+            String result = String.format("%.4f", tempNum);
+
+            float newReult = Float.parseFloat(result);
+
+            float finalReult = newReult * beiChuShu;
+
+
+            Log.v("dd1", result);
+            Log.v("dd2", String.valueOf(finalReult));
+
+            if (finalReult == chuShu) {
+
+                return true;
+            }
+        }
+
+        return false;
+
 
     }
 

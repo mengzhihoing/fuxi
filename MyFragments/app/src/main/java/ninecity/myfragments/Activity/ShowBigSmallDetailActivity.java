@@ -141,7 +141,7 @@ public class ShowBigSmallDetailActivity extends AppCompatActivity {
             content+=daYunYaoCi;
             content+="\n大运周期: "+bigSmallYun.getFullDaYunZhouQi(daYunYaoCi)+"\n";
 
-            List yaoziList=bigSmallYun.getDaYunYaoZi(daYunYaoCi,month);
+            List yaoziList=bigSmallYun.getDaYunYaoZi(daYunYaoCi,month,day);
 
             Log.v("yaozi",yaoziList.toString());
 

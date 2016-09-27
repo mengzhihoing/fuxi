@@ -51,7 +51,7 @@
         android:layout_marginRight="20dp"
         android:hint="姓氏"
         android:inputType="textPersonName"
-        android:text=""
+        android:text="向往阿"
 
         />
 
@@ -64,7 +64,7 @@
         android:layout_marginTop="10dp"
         android:hint="名字"
         android:inputType="textPersonName"
-        android:text=""
+        android:text="超好阿"
 
         />
 

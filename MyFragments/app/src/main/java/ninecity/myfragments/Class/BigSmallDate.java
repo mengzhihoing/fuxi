@@ -40,7 +40,7 @@ public class BigSmallDate {
                 int[] pre = (int[]) dateList.get(0);
                 int[] next = (int[]) dateList.get(1);
 
-                String content = String.format("%d年%d月%d日-%d年%d月%d日", pre[0], pre[1], pre[2], next[0], next[1], next[2]);
+                String content = String.format("%d年%02d月%02d日-%d年%02d月%02d日", pre[0], pre[1], pre[2], next[0], next[1], next[2]);
 
                 mList.add(content);
 
@@ -375,7 +375,7 @@ public class BigSmallDate {
 //            [mArray
 //            addObject:[NSString stringWithFormat:@"%@-%@", dateStr, newDateStr]];
 
-            String content = String.format("%d年%d月%d日-%d年%d月%d日", currentDate[0], currentDate[1], currentDate[2], newDate[0], newDate[1], newDate[2]);
+            String content = String.format("%d年%02d月%02d日-%d年%02d月%02d日", currentDate[0], currentDate[1], currentDate[2], newDate[0], newDate[1], newDate[2]);
 
             mList.add(content);
 
