@@ -28,31 +28,24 @@ public class BigSmallDate {
             List list = getXiaoYunWithBirthDayDate(newDate, subZhouqi, count);
 
 
-
-
-
-
             List temtList = (List) list.get(list.size() - 1);
 
             newDate = getLastDate(temtList);
 
 
-            for (int j=0;j<list.size();j++){
+            for (int j = 0; j < list.size(); j++) {
 
-                List dateList=(List) list.get(j);
+                List dateList = (List) list.get(j);
 
-                int[] pre=(int[]) dateList.get(0);
-                int[] next=(int[]) dateList.get(1);
+                int[] pre = (int[]) dateList.get(0);
+                int[] next = (int[]) dateList.get(1);
 
-                String content=String.format("%d年%d月%d日-%d年%d月%d日",pre[0],pre[1],pre[2],next[0],next[1],next[2]);
+                String content = String.format("%d年%d月%d日-%d年%d月%d日", pre[0], pre[1], pre[2], next[0], next[1], next[2]);
 
                 mList.add(content);
 
 
-
             }
-
-
 
 
         }
@@ -88,9 +81,9 @@ public class BigSmallDate {
 
 
         int cycleNian = zhouQiList[0];
-        int cycleYue =  zhouQiList[1];
-        int cycleRi =  zhouQiList[2];
-        int cycleYuRi =  zhouQiList[3];
+        int cycleYue = zhouQiList[1];
+        int cycleRi = zhouQiList[2];
+        int cycleYuRi = zhouQiList[3];
         int firstYear = nian;
 
         List mList = new ArrayList();
@@ -146,9 +139,9 @@ public class BigSmallDate {
             int[] newDateArray = handleLastDateWithNian(nian, yue, ri);
 
 
-            String content=String.format("%d年%d月%d日-%d年%d月%d日",dateArray[0],dateArray[1],dateArray[2],newDateArray[0],newDateArray[1],newDateArray[2]);
+            String content = String.format("%d年%d月%d日-%d年%d月%d日", dateArray[0], dateArray[1], dateArray[2], newDateArray[0], newDateArray[1], newDateArray[2]);
 
-            Log.v("hh",content);
+            Log.v("hh", content);
 
             List tempList = new ArrayList();
             tempList.add(dateArray);
@@ -316,5 +309,137 @@ public class BigSmallDate {
 
     }
 
+
+
+
+    public List getDaYunZhouQi(int[] date, int[] zhouQiArray) {
+
+        int nian = date[0];
+        int yue = date[1];
+        int ri = date[2];
+
+        int cycleNian = zhouQiArray[0];
+        int cycleYue = zhouQiArray[1];
+        int cycleRi = zhouQiArray[2];
+        int cycleYuRi = zhouQiArray[3];
+        int firstYear = nian;
+
+        List mList = new ArrayList();
+
+        for (int i = 0; i < 100; i++) {
+
+//            NSString *dateStr =
+//            [NSString stringWithFormat:@"%d年%.2d月%.2d日", nian, yue, ri];
+
+            int[] currentDate = {nian, yue, ri};
+
+            //      calculate day
+            ri += cycleRi;
+            int[] riArray = handleDate(ri, yue, nian, cycleYue);
+            ri = riArray[0];
+            yue = riArray[1];
+
+            //      calculate month
+            yue += cycleYue;
+            int[] yueArray = handleYueAndNian(yue, nian);
+            yue = yueArray[0];
+            nian = yueArray[1];
+
+            //      calculate year
+            nian += cycleNian;
+
+            if (cycleYuRi > 0 && nian == firstYear + 30) {
+                int preDay = cycleYuRi / 2;
+                ri += preDay;
+
+                riArray = handleDate(ri, yue, nian, cycleYue);
+                ri = riArray[0];
+                yue = riArray[1];
+
+            } else if (cycleYuRi > 0 && nian == firstYear + 60) {
+                int preDay = cycleYuRi / 2;
+                int lastDay = cycleYuRi - preDay;
+                ri += lastDay;
+
+                riArray = handleDate(ri, yue, nian, cycleYue);
+                ri = riArray[0];
+                yue = riArray[1];
+            }
+
+//            NSString *newDateStr = [self handleLastDateWithNian:nian yue:yue ri:ri];
+
+            int[] temt = {nian, yue, ri};
+
+            int[] newDate = getLastDate(temt);
+
+//            [mArray
+//            addObject:[NSString stringWithFormat:@"%@-%@", dateStr, newDateStr]];
+
+            String content = String.format("%d年%d月%d日-%d年%d月%d日", currentDate[0], currentDate[1], currentDate[2], newDate[0], newDate[1], newDate[2]);
+
+            mList.add(content);
+
+            if (nian == firstYear + 60) {
+                break;
+            }
+        }
+
+        return mList;
+
+
+    }
+
+
+    private int[] getLastDate(int[] date) {
+
+        int yue=date[1];
+        int ri=date[2];
+        int year=date[0];
+
+        switch (yue) {
+
+            case 3: {
+                if (ri == 1) {
+                    yue--;
+                    if (isRunNian(year)) {
+                        ri = 29;
+                    } else {
+                        ri = 28;
+                    }
+                } else {
+                    ri--;
+                }
+
+            } break;
+
+            case 2:
+            case 4:
+            case 6:
+            case 9:
+            case 11: {
+                if (ri == 1) {
+                    yue--;
+                    ri = 31;
+                } else {
+                    ri--;
+                }
+            } break;
+
+            default: {
+                if (ri == 1) {
+                    yue--;
+                    ri = 30;
+                } else {
+                    ri--;
+                }
+
+            } break;
+        }
+
+        int[] array={year,yue,ri};
+        return array;
+
+
+    }
 
 }

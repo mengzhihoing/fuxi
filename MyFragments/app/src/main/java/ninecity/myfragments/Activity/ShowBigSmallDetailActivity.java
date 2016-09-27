@@ -1,11 +1,18 @@
 package ninecity.myfragments.Activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -69,6 +76,10 @@ public class ShowBigSmallDetailActivity extends AppCompatActivity {
 
         ListViewForScrollView listView = (ListViewForScrollView) findViewById(R.id.scrollListView);
 
+        BigSmallDate bigSmallDate=new BigSmallDate();
+
+        int[] dateArray={year,month,day};
+
 
         if (type.equals("small")) {
             titleTextView.setText("小运");
@@ -79,14 +90,12 @@ public class ShowBigSmallDetailActivity extends AppCompatActivity {
 
             List yaoZiList = bigSmallYun.getXiaoYunYaoZi(yaociList, month);
 
-            BigSmallDate bigSmallDate=new BigSmallDate();
 
 //             小运周期
             List zhouQiList= bigSmallYun.getSortedAllXiaoYunZhouQi(yaociList,month);
 //爻辞
             List sortedYaoCiList=  bigSmallYun.getSortedYaoCi(yaociList,month);
 
-            int[] dateArray={year,month,day};
 
 
 
@@ -100,9 +109,9 @@ public class ShowBigSmallDetailActivity extends AppCompatActivity {
 
             for (int i=0;i<yaoZiList.size();i++){
 
-                String biHua=String.format("%02d画",chineseBiHua.getContentCount(String.valueOf(yaoZiList.get(i))));
+                String biHua=String.format("%d画",chineseBiHua.getContentCount(String.valueOf(yaoZiList.get(i))));
 
-                String result=String.format("%s %s %s",yaoZiList.get(i),dateList.get(i),biHua);
+                String result=String.format(" %s %s %s",yaoZiList.get(i),dateList.get(i),biHua);
                 finalList.add(result);
 
             }
@@ -112,12 +121,40 @@ public class ShowBigSmallDetailActivity extends AppCompatActivity {
 //
 
 
-            ListAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, finalList);
+            ListAdapter adapter = new ArrayAdapter<String>(this, R.layout.listitem, finalList);
             listView.setAdapter(adapter);
 
 
         } else {
             titleTextView.setText("大运");
+
+            String daYunYaoCi=bigSmallYun.getDaYunYaoCiWithGuaNumber(yaociList,month);
+            content+=daYunYaoCi;
+            content+="\n大运周期: "+bigSmallYun.getFullDaYunZhouQi(daYunYaoCi)+"\n";
+
+            List yaoziList=bigSmallYun.getDaYunYaoZi(daYunYaoCi,month);
+
+            Log.v("yaozi",yaoziList.toString());
+
+            List dateList=bigSmallDate.getDaYunZhouQi(dateArray,bigSmallYun.getDaYunZhouQi(daYunYaoCi));
+
+
+            ChineseBiHua chineseBiHua=new ChineseBiHua();
+
+            List finalList=new ArrayList();
+
+            for (int i=0;i<yaoziList.size();i++){
+
+                String biHua=String.format("%d画",chineseBiHua.getContentCount(String.valueOf(yaoziList.get(i))));
+
+                String result=String.format(" %s %s %s",yaoziList.get(i),dateList.get(i),biHua);
+                finalList.add(result);
+
+            }
+
+            ListAdapter adapter = new ArrayAdapter<String>(this, R.layout.listitem, finalList);
+            listView.setAdapter(adapter);
+
         }
 
 
@@ -131,5 +168,10 @@ public class ShowBigSmallDetailActivity extends AppCompatActivity {
     public void back(View v) {
         finish();
     }
+
+
+
+
+
 
 }

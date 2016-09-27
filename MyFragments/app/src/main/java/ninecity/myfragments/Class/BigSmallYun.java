@@ -11,19 +11,12 @@ import java.util.List;
 public class BigSmallYun {
 
 
-//    小运周期  1 1 3 0
+    //    小运周期  1 1 3 0
     private int[] getSmallYunZhouqiArray(String yaoCi) {
 
         int number1 = 10;
-        int number2 = 0;
+        int number2 = getYaoCiLength(yaoCi);
 
-        for (int i = 0; i < yaoCi.length(); i++) {
-            String subYaoci = yaoCi.substring(i, i + 1);
-            if (subYaoci.equals("：")) {
-                Log.v("index", String.valueOf(i));
-                number2 = yaoCi.length() - i - 1;
-            }
-        }
 
 //        year
         int nian = number1 / number2;
@@ -41,15 +34,14 @@ public class BigSmallYun {
         int shengYuRi = shengYuYue * 30 - ri * number2;
 
 
-
-        int[] array={nian,yue,ri,shengYuRi};
+        int[] array = {nian, yue, ri, shengYuRi};
 
         return array;
 
     }
 
 
-//    获取整个小运周期 {[1,2,0,0],[1,2,0,0],}
+    //    获取整个小运周期 {[1,2,0,0],[1,2,0,0],}
     private List getAllSmallYunZhouqiArray(List yaociList) {
 
         List arrayList = new ArrayList();
@@ -144,14 +136,14 @@ public class BigSmallYun {
             return list;
         }
 
-        List newList=new ArrayList();
+        List newList = new ArrayList();
 
-        for (int i=index;i<list.size();i++){
+        for (int i = index; i < list.size(); i++) {
             newList.add(list.get(i));
         }
 
 
-        for (int i=0;i<index;i++){
+        for (int i = 0; i < index; i++) {
             newList.add(list.get(i));
         }
 
@@ -162,57 +154,54 @@ public class BigSmallYun {
     }
 
 
-    public List getSortedAllXiaoYunZhouQi(List yaociList,int month){
+    public List getSortedAllXiaoYunZhouQi(List yaociList, int month) {
 
-        List cycle=getAllSmallYunZhouqiArray(yaociList);
+        List cycle = getAllSmallYunZhouqiArray(yaociList);
 
-        return sortedArrayWithArray(cycle,month);
-
-    }
-
-
-    public List getSortedYaoCi(List list,int month){
-
-
-        return sortedArrayWithArray(list,month);
+        return sortedArrayWithArray(cycle, month);
 
     }
 
 
-    public String getFullXiaoYunYaoCiAndZhouQi(List yaociList,int month){
+    public List getSortedYaoCi(List list, int month) {
+
+
+        return sortedArrayWithArray(list, month);
+
+    }
+
+
+    public String getFullXiaoYunYaoCiAndZhouQi(List yaociList, int month) {
 //        排序后的爻辞
-        List sortedYaoci=getSortedYaoCi(yaociList,month);
+        List sortedYaoci = getSortedYaoCi(yaociList, month);
 
-       String content="排序后的爻辞:\n";
+        String content = "排序后的爻辞:\n";
 
-        content+=hanldList(sortedYaoci);
-
+        content += hanldList(sortedYaoci);
 
 
         //获取小运周期
 
-        List list= getSortedAllXiaoYunZhouQi(yaociList,month);
+        List list = getSortedAllXiaoYunZhouQi(yaociList, month);
 
-        content+="\n\n对应周期:\n";
-
-
-        String[] liveArray={"出生-10岁: ","11岁-20岁: ","21岁-30岁: ","31岁-40岁: ","41岁-50岁: ","51岁-60岁: "};
+        content += "\n\n对应周期:\n";
 
 
+        String[] liveArray = {"出生-10岁: ", "11岁-20岁: ", "21岁-30岁: ", "31岁-40岁: ", "41岁-50岁: ", "51岁-60岁: "};
 
-        for(int i=0;i<list.size();i++) {
 
-            content+=liveArray[i];
+        for (int i = 0; i < list.size(); i++) {
+
+            content += liveArray[i];
 
             int[] tempList = (int[]) list.get(i);
             content += handleZhouQi(tempList);
-            content+="\n";
+            content += "\n";
 
         }
 
 
-        content+="\n\n";
-
+        content += "\n\n";
 
 
         return content;
@@ -221,22 +210,22 @@ public class BigSmallYun {
     }
 
 
-    private String handleZhouQi(int[] list){
+    private String handleZhouQi(int[] list) {
 
 
-        return String.format("%d年%d月%d日%d日剩余",list[0],list[1],list[2],list[3]);
+        return String.format("%d年%d月%d日%d日剩余", list[0], list[1], list[2], list[3]);
 
     }
 
 
-    private String hanldList(List listArray){
+    private String hanldList(List listArray) {
 
 
-        String content="";
+        String content = "";
 
-        for (int i=0;i<listArray.size();i++){
-            content+=String.valueOf(listArray.get(i));
-            content+="\n";
+        for (int i = 0; i < listArray.size(); i++) {
+            content += String.valueOf(listArray.get(i));
+            content += "\n";
         }
 
         return content;
@@ -244,20 +233,20 @@ public class BigSmallYun {
     }
 
 
-    public List getXiaoYunYaoZi(List yaociList,int month){
+    public List getXiaoYunYaoZi(List yaociList, int month) {
 
         //        排序后的爻辞
-        List sortedYaoci=getSortedYaoCi(yaociList,month);
+        List sortedYaoci = getSortedYaoCi(yaociList, month);
 
-        List newList=new ArrayList();
+        List newList = new ArrayList();
 
-        for (int i=0;i<sortedYaoci.size();i++){
+        for (int i = 0; i < sortedYaoci.size(); i++) {
 
-            String yaoci=String.valueOf(sortedYaoci.get(i));
+            String yaoci = String.valueOf(sortedYaoci.get(i));
 
 
-            for (int j=3;j<yaoci.length();j++){
-                String yaoZi=yaoci.substring(j,j+1);
+            for (int j = 3; j < yaoci.length(); j++) {
+                String yaoZi = yaoci.substring(j, j + 1);
                 newList.add(yaoZi);
 
             }
@@ -270,5 +259,155 @@ public class BigSmallYun {
 
     }
 
+
+    //    #pragma mark 大运爻辞
+    public String getDaYunYaoCiWithGuaNumber(List yaociList, int month) {
+
+        int index = getIndexWithMonth(month);
+
+        String yaoci = (String) yaociList.get(index - 1);
+
+
+        return yaoci;
+
+
+    }
+
+//    大运周期
+
+    public int[] getDaYunZhouQi(String yaoci) {
+
+        int number1 = 60;
+        int number2 = getYaoCiLength(yaoci);
+        //    年
+        int nian = number1 / number2;
+        //    （60-8*7）*12=48
+        int shengYuNian = (number1 - nian * number2) * 12;
+        //  月
+        int yue = shengYuNian / number2;
+        //    48-6*7=6
+        int shengYuYue = shengYuNian - yue * number2;
+        //    日
+        int ri = shengYuYue * 30 / number2;
+        //   剩余日
+
+        int shengYuRi = shengYuYue * 30 - ri * number2;
+
+        int[] array = {nian, yue, ri, shengYuRi};
+
+        return array;
+
+
+    }
+
+
+    public String getFullDaYunZhouQi(String yaoci) {
+
+        int[] array = getDaYunZhouQi(yaoci);
+
+
+        return String.format("%d年%d月%d日%d日剩余", array[0], array[1], array[2], array[3]);
+
+
+    }
+
+
+    private int getYaoCiLength(String yaoCi) {
+
+        for (int i = 0; i < yaoCi.length(); i++) {
+            String subYaoci = yaoCi.substring(i, i + 1);
+            if (subYaoci.equals("：")) {
+                Log.v("index", String.valueOf(i));
+                return yaoCi.length() - i - 1;
+            }
+        }
+
+
+        return 0;
+    }
+
+
+//    大运爻字
+    public List getDaYunYaoZi(String yaoCi, int month) {
+
+        int index = getIndexWithMonth(month);
+
+        index--;
+
+        if (yaoCi.length() == 16 || yaoCi.length() == 6) {
+            index--;
+        }
+
+        String chunYaoZi=getChunYaozi(yaoCi);
+
+        List pre = new ArrayList();
+        List next = new ArrayList();
+
+        for (int i = 0; i < chunYaoZi.length(); i++) {
+
+            String str = chunYaoZi.substring(i, i + 1);
+
+            if (!str.equals(" ")) {
+
+                if (i < index) {
+                    next.add(str);
+                } else {
+                    pre.add(str);
+                }
+
+            }
+
+
+        }
+
+
+        List lastList = new ArrayList();
+
+        handleArray(lastList, pre);
+        handleArray(lastList, next);
+
+
+        return lastList;
+
+
+    }
+
+
+    private void handleArray(List list1, List list2) {
+
+
+        for (int i = 0; i < list2.size(); i++) {
+
+            String sub = (String) list2.get(i);
+
+            list1.add(sub);
+
+
+        }
+
+
+    }
+
+
+    private String getChunYaozi(String yaoci) {
+
+        List newList=new ArrayList();
+
+        for (int j = 3; j < yaoci.length(); j++) {
+            String yaoZi = yaoci.substring(j, j + 1);
+            newList.add(yaoZi);
+
+        }
+
+        String content="";
+
+        for (int i=0;i<newList.size();i++){
+
+            content+=(String) newList.get(i);
+        }
+
+        return content;
+
+    }
 
 }
