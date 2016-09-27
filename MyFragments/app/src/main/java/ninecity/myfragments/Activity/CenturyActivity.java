@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.avos.avoscloud.AVAnalytics;
+
 import ninecity.myfragments.R;
 
 public class CenturyActivity extends AppCompatActivity {
@@ -54,6 +56,9 @@ public class CenturyActivity extends AppCompatActivity {
 
 
     private void handleCentury(){
+
+        AVAnalytics.onEvent(this, "世纪卦");
+
 
         int number=handleNumber(century);
         int guaNumber=number*10+number;

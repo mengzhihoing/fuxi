@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVAnalytics;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -172,6 +173,8 @@ public class ChooseGuaActivity extends AppCompatActivity {
 
         if (isFast) {
 
+            AVAnalytics.onEvent(this, "快捷查询");
+
             GuaName guaName = new GuaName();
 
             String benMingGua = String.format("本命卦：%s", guaName.getFullBenMing(guaNumber));
@@ -185,6 +188,9 @@ public class ChooseGuaActivity extends AppCompatActivity {
             textView.setText(content);
 
         }else {
+
+            AVAnalytics.onEvent(this, "九宫格");
+
 
             Intent intent=new Intent();
             intent.setClass(this,The9GridActivity.class);

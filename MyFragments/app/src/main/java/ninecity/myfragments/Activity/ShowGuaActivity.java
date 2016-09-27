@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.TextView;
 
 
+import com.avos.avoscloud.AVAnalytics;
+
 import ninecity.myfragments.Class.BenMingDetail;
 import ninecity.myfragments.Class.GuaColor;
 import ninecity.myfragments.Class.GuaName;
@@ -83,11 +85,13 @@ public class ShowGuaActivity extends AppCompatActivity {
 
         if (type.equals("本命卦")) {
 
+            AVAnalytics.onEvent(this, "本命卦");
 
             setContent(guaNumber, 0);
 
 
         } else if (type.equals("成功卦")) {
+            AVAnalytics.onEvent(this, "成功卦");
 
             int gua[] = guaName.getSuccess(guaNumber);
 
@@ -100,6 +104,8 @@ public class ShowGuaActivity extends AppCompatActivity {
 
         } else if (type.equals("失败卦")) {
 
+            AVAnalytics.onEvent(this, "失败卦");
+
             int gua[] = guaName.getFailure(guaNumber);
 
             if (isDouble == true) {
@@ -110,6 +116,9 @@ public class ShowGuaActivity extends AppCompatActivity {
 
         } else {
 //            衰变卦
+
+            AVAnalytics.onEvent(this, "衰变卦");
+
 
             int gua[] = guaName.getShuaiBian(guaNumber);
 

@@ -17,6 +17,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVAnalytics;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,6 +86,9 @@ public class ShowBigSmallDetailActivity extends AppCompatActivity {
         if (type.equals("small")) {
             titleTextView.setText("小运");
 
+            AVAnalytics.onEvent(this, "小运");
+
+
 
             content += bigSmallYun.getFullXiaoYunYaoCiAndZhouQi(yaociList, month);
 
@@ -128,7 +133,11 @@ public class ShowBigSmallDetailActivity extends AppCompatActivity {
         } else {
             titleTextView.setText("大运");
 
+            AVAnalytics.onEvent(this, "大运");
+
+
             String daYunYaoCi=bigSmallYun.getDaYunYaoCiWithGuaNumber(yaociList,month);
+            content+="爻辞: \n";
             content+=daYunYaoCi;
             content+="\n大运周期: "+bigSmallYun.getFullDaYunZhouQi(daYunYaoCi)+"\n";
 

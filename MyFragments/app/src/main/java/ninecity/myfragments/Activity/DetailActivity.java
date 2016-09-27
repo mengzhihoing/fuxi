@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.avos.avoscloud.AVAnalytics;
+
 import ninecity.myfragments.R;
 
 
@@ -70,6 +72,9 @@ public class DetailActivity extends AppCompatActivity {
             startActivity(intent);
 
         }else {
+
+            AVAnalytics.onEvent(this, "九宫卦");
+
 
             Intent intent=new Intent();
             intent.setClass(this,The9GridActivity.class);

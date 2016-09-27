@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.avos.avoscloud.AVAnalytics;
+
 import java.util.List;
 
 import ninecity.myfragments.Class.BigSmallYun;
@@ -54,6 +56,10 @@ public class HomeFragment extends Fragment {
 //                Intent intent=new Intent();
 //                intent.setClass(mcontext,Main2Activity.class);
 //                startActivity(intent);
+
+
+                AVAnalytics.onEvent(getActivity(), "姓名");
+
 
 
                 TextView textView=(TextView)getActivity().findViewById(R.id.showText);

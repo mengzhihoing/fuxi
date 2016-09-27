@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.avos.avoscloud.AVAnalytics;
+
 import java.util.Calendar;
 
 import ninecity.myfragments.Class.GuaName;
@@ -68,6 +70,9 @@ public class YearActivity extends AppCompatActivity {
 
 
     private void fetchHandle() {
+
+        AVAnalytics.onEvent(this, "年卦");
+
 
         int guaNumber = 0;
         String yearString = String.valueOf(year);

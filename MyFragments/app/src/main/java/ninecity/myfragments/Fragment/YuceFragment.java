@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.avos.avoscloud.AVAnalytics;
+
 import ninecity.myfragments.Activity.BigSmallYunActivity;
 import ninecity.myfragments.Activity.CenturyActivity;
 import ninecity.myfragments.Activity.ChooseGuaActivity;
@@ -76,13 +78,16 @@ public class YuceFragment extends Fragment {
         cityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                AVAnalytics.onEvent(getActivity(), "城市卦");
+
 //                Intent intent = new Intent();
 //                intent.setClass(getActivity(), ShowRiliActivity.class);
 //                startActivity(intent);
 
-                Intent it = new Intent(Intent.ACTION_VIEW, Uri.parse("https://raw.githubusercontent.com/mengzhihoing/json/master/fuxiyi.apk"));
-                it.setClassName("com.android.browser", "com.android.browser.BrowserActivity");
-                getActivity().startActivity(it);
+//                Intent it = new Intent(Intent.ACTION_VIEW, Uri.parse("https://raw.githubusercontent.com/mengzhihoing/json/master/fuxiyi.apk"));
+//                it.setClassName("com.android.browser", "com.android.browser.BrowserActivity");
+//                getActivity().startActivity(it);
             }
 
         });

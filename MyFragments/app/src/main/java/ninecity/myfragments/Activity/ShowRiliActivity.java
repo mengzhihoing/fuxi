@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVAnalytics;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -215,6 +217,8 @@ public class ShowRiliActivity extends AppCompatActivity {
 
 
     private void fetchRiGua() {
+
+        AVAnalytics.onEvent(this, "日历");
 
 
         System.out.println("final");
